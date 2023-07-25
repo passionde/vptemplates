@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<style>
+  /* Основной контейнер для плеера */
+  #ytplayer {
+    width: 360px;
+    height: 640px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: auto;
+  }
+</style>
+<iframe id="ytplayer" type="text/html" width="339" height="603"
+        src="https://www.youtube.com/embed/lOzbU9G5sSM?autoplay=1&controls=0&fs=0&iv_load_policy=3&loop=1&modestbranding=1&rel=0&showinfo=0&enablejsapi=1"
+></iframe>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script>
+  Telegram.WebApp.expand();
+</script>
+</body>
+</html>
