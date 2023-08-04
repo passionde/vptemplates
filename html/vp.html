@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VP</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/script.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div onclick="redirect('menu')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+            </svg>
+        </div>
+
+        <div class="headertext">
+            VP Challenge
+        </div>
+    </div>
+
+    <div class="tags">
+        <div class="tag-active" id="beatbox" onclick="MakeActive('beatbox')">#beatbox</div>
+        <div class="tag-inactive" id="dance" onclick="MakeActive('dance')">#dance</div>
+        <div class="tag-inactive" id="vocal" onclick="MakeActive('vocal')">#vocal</div>
+        <div class="tag-inactive" id="sport" onclick="MakeActive('sport')">#sport</div>
+        <div class="tag-inactive" id="talent" onclick="MakeActive('talent')">#talent</div>
+    </div>
+
+    <div class="battles">
+        <div class="battle">
+            <div class="battle-left">
+                <div class="battle-about">
+                    <div class="battle-left battle-avatar"></div>
+                    <div class="battle-name">{name}</div>
+                </div>
+                <div class="battle-score">
+                    {score}
+                </div>
+            </div>
+
+            <div class="vs" align="center">vs</div>
+
+            <div class="battle-right">
+                <div class="battle-about">
+                    <div class="battle-avatar"></div>
+                    <div class="battle-name">{name}</div>
+                </div>
+                <div class="battle-score">
+                    {score}
+                </div>
+            </div>
+        </div>
+
+        <div class="battle">
+            <div class="battle-left">
+                <div class="battle-about">
+                    <div class="battle-left battle-avatar"></div>
+                    <div class="battle-name">{name}</div>
+                </div>
+                <div class="battle-score">
+                    {score}
+                </div>
+            </div>
+
+            <div class="vs" align="center">vs</div>
+
+            <div class="battle-right">
+                <div class="battle-about">
+                    <div class="battle-avatar"></div>
+                    <div class="battle-name">{name}</div>
+                </div>
+                <div class="battle-score">
+                    {score}
+                </div>
+            </div>
+        </div>
+
+        <div class="battle">
+            <div class="battle-left">
+                <div class="battle-about">
+                    <div class="battle-left battle-avatar"></div>
+                    <div class="battle-name">{name}</div>
+                </div>
+                <div class="battle-score">
+                    {score}
+                </div>
+            </div>
+
+            <div class="vs" align="center">vs</div>
+
+            <div class="battle-right">
+                <div class="battle-about">
+                    <div class="battle-avatar"></div>
+                    <div class="battle-name">{name}</div>
+                </div>
+                <div class="battle-score">
+                    {score}
+                </div>
+            </div>
+        </div>
+
+        <div class="battle">
+            <div class="battle-left">
+                <div class="battle-about">
+                    <div class="battle-left battle-avatar"></div>
+                    <div class="battle-name">{name}</div>
+                </div>
+                <div class="battle-score">
+                    {score}
+                </div>
+            </div>
+
+            <div class="vs" align="center">vs</div>
+
+            <div class="battle-right">
+                <div class="battle-about">
+                    <div class="battle-avatar"></div>
+                    <div class="battle-name">{name}</div>
+                </div>
+                <div class="battle-score">
+                    {score}
+                </div>
+            </div>
+        </div>
+
+        <div class="battle">
+            <div class="battle-left">
+                <div class="battle-about">
+                    <div class="battle-left battle-avatar"></div>
+                    <div class="battle-name">{name}</div>
+                </div>
+                <div class="battle-score">
+                    {score}
+                </div>
+            </div>
+
+            <div class="vs" align="center">vs</div>
+
+            <div class="battle-right">
+                <div class="battle-about">
+                    <div class="battle-avatar"></div>
+                    <div class="battle-name">{name}</div>
+                </div>
+                <div class="battle-score">
+                    {score}
+                </div>
+            </div>
+        </div>
+
+        <div class="battle">
+            <div class="battle-left">
+                <div class="battle-about">
+                    <div class="battle-left battle-avatar"></div>
+                    <div class="battle-name">{name}</div>
+                </div>
+                <div class="battle-score">
+                    {score}
+                </div>
+            </div>
+
+            <div class="vs" align="center">vs</div>
+
+            <div class="battle-right">
+                <div class="battle-about">
+                    <div class="battle-avatar"></div>
+                    <div class="battle-name">{name}</div>
+                </div>
+                <div class="battle-score">
+                    {score}
+                </div>
+            </div>
+        </div>
+
+        <div class="battle">
+            <div class="battle-left">
+                <div class="battle-about">
+                    <div class="battle-left battle-avatar"></div>
+                    <div class="battle-name">{name}</div>
+                </div>
+                <div class="battle-score">
+                    {score}
+                </div>
+            </div>
+
+            <div class="vs" align="center">vs</div>
+
+            <div class="battle-right">
+                <div class="battle-about">
+                    <div class="battle-avatar"></div>
+                    <div class="battle-name">{name}</div>
+                </div>
+                <div class="battle-score">
+                    {score}
+                </div>
+            </div>
+        </div>
+
+        <div class="battle">
+            <div class="battle-left">
+                <div class="battle-about">
+                    <div class="battle-left battle-avatar"></div>
+                    <div class="battle-name">{name}</div>
+                </div>
+                <div class="battle-score">
+                    {score}
+                </div>
+            </div>
+
+            <div class="vs" align="center">vs</div>
+
+            <div class="battle-right">
+                <div class="battle-about">
+                    <div class="battle-avatar"></div>
+                    <div class="battle-name">{name}</div>
+                </div>
+                <div class="battle-score">
+                    {score}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

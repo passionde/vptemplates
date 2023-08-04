@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/script.js" defer></script>
+    <script src="../js/video-pagination.js" defer></script>
+</head>
+<body>
+    <div class="about">
+        <div class="rating"  style="font-size:2.5vh;
+                                    margin:auto;
+                                    text-align: center;"><b>132</b><br>Рейтинг</div>
+        <div class="avatar"></div>
+        <div class="coins"   style="font-size:2.5vh;
+                                    margin:auto;
+                                    text-align: center;;">4<br>VPCoins</div>
+    </div>
+
+    <div class="name" align="center"><br>{name}</div>
+
+    <div class="add-clip" align="center" onclick="redirect('yt');">
+        <p class="add-clip-text">Добавить клип</p>
+    </div>
+
+    <div class="videos">
+        <div class="video-row">
+            <div id="video" onclick="mark(this)"></div>
+            <div id="video" onclick="mark(this)"></div>
+            <div id="video" onclick="mark(this)"></div>
+        </div>
+        <div class="video-row">
+            <div id="video" onclick="mark(this)"></div>
+            <div id="video" onclick="mark(this)"></div>
+            <div id="video" onclick="mark(this)"></div>
+        </div>
+    </div>
+</body>
+</html>
