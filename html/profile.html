@@ -5,37 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="../js/script.js" defer></script>
     <script src="../js/video-pagination.js" defer></script>
 </head>
-<body>
+<body onload="getUserInfo(); getUserAllVideos()">
     <div class="about">
         <div class="rating"  style="font-size:2.5vh;
                                     margin:auto;
-                                    text-align: center;"><b>132</b><br>Рейтинг</div>
-        <div class="avatar"></div>
+                                    text-align: center;"></div>
+        <img src="" class="avatar">
         <div class="coins"   style="font-size:2.5vh;
                                     margin:auto;
-                                    text-align: center;;">4<br>VPCoins</div>
+                                    text-align: center;;"></div>
     </div>
 
-    <div class="name" align="center"><br>{name}</div>
+    <div class="name" align="center"></div>
 
     <div class="add-clip" align="center" onclick="redirect('yt');">
         <p class="add-clip-text">Добавить клип</p>
     </div>
 
-    <div class="videos">
-        <div class="video-row">
-            <div id="video" onclick="mark(this)"></div>
-            <div id="video" onclick="mark(this)"></div>
-            <div id="video" onclick="mark(this)"></div>
-        </div>
-        <div class="video-row">
-            <div id="video" onclick="mark(this)"></div>
-            <div id="video" onclick="mark(this)"></div>
-            <div id="video" onclick="mark(this)"></div>
-        </div>
+    <div class="videos">        
+    </div>
+    
+    <div class="button" onclick="redirect('menu')">
+        <p>На главную</p>
     </div>
 </body>
 </html>
+
+
