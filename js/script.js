@@ -91,7 +91,7 @@ async function getUserAllVideos() {
         let video = document.createElement("img");
         let bin = document.createElement("img");
 
-        bin.setAttribute("src", "img/bin.png");
+        bin.setAttribute("src", "../img/bin.png");
         bin.setAttribute("class", "bin")
         bin.setAttribute("id", json.items[i].video_id)
         bin.setAttribute("onclick", `notify('deletevideo', this.id)`)
