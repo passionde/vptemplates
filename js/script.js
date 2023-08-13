@@ -61,7 +61,7 @@ async function getUserInfo() {
 
     avatar.setAttribute("src", json.photo_url_160)
     name.innerHTML = json.username_or_first_name;
-    if (window.location.href === "http://127.0.0.1:5500/index.html"){
+    if (window.location.href === "http://127.0.0.1:5500/menu.html"){
         coins.innerHTML = json.vp_coins + " VPCoins";
         rating.innerHTML = "Рейтинг: " + json.rating;
     } else if (window.location.href === "http://127.0.0.1:5500/profile.html") {
