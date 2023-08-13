@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Youtube Shorts</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="../js/script.js"></script>
 </head>
-<body>
+<body style="height:100vh">
     <div class="header">
         <div onclick="redirect('menu')">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
@@ -24,11 +25,11 @@
 
         <div style="margin: 3vh 0 2.5vh 0;">Ссылка на ваше видео YouTube Shorts</div>
 
-        <input type="url" placeholder="https://www.youtube.com/shorts/s-z3QX"/>
+        <input type="url" placeholder="https://www.youtube.com/shorts/SHORTSID"/>
 
         <div class="buttons-horizontal">
             <div class="cancel" onclick="redirect('menu')">Отмена</div>
-            <div class="submit" onclick="darkenbg(); notify('clipaddition')"><div class="submit-text">ОК</div></div>
+            <div class="submit" onclick="addNewVideo(getUrl())"><div class="submit-text">ОК</div></div>
         </div>
 
     </div>
