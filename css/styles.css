@@ -151,13 +151,13 @@ body {
 .categories {
     width: 30vh;
     margin: 15vh auto 0 auto;
-    font-size: 3.4vh;
+    font-size: 4vh;
     text-align: center;
     font-weight: 300;
     padding-left:0;
     overflow: auto;
     position: relative;
-    height: 40vh;
+    height: 50vh;
 }
 .categories::-webkit-scrollbar {
     display:none
@@ -198,8 +198,8 @@ body {
 }
 
 .coins {
-    margin: 1em 0 3em 0;
-    font-size: 2em;
+    margin: 3vh 0 3vh 0;
+    font-size: 4vh;
     text-align: center;
 	color: transparent;    
 	-webkit-background-clip: text;
@@ -216,7 +216,7 @@ body {
     margin: 0 auto;
     font-size: 3vh;
     font-weight: bold;
-    padding-top: .2em;
+    padding-top: .2vh;
 }
 
 input {
@@ -249,7 +249,7 @@ li {
 }
 
 .name {
-    font-size: 1.5em;
+    font-size: 3vh;
     font-weight: bold;
 }
 
@@ -415,8 +415,8 @@ li {
 }
 
 .wrapper {
-    margin-left: 1em;
-    margin-top: 1.5em;
+    margin-left: 2vh;
+    margin-top: 3vh;
 }
 
 .yt-connect {

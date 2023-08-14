@@ -28,15 +28,17 @@
 
     <div class="videos">        
     </div>
-    
-    <div class="button" onclick="redirect('menu')">
-        <p>На главную</p>
-    </div>
     <script scr="text/javascript">
+        function redirect(url) {
+            window.location.href = url + ".html"
+        }
         var WebApp = window.Telegram.WebApp;
         var MainButton = WebApp.MainButton;
+        var BackButton = WebApp.BackButton;
 
+        MainButton.text("На главную");
         MainButton.show();
+        BackButton.show();
 
         MainButton.onClick(redirect("profile"))
     </script>

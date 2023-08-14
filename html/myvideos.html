@@ -8,6 +8,16 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="../js/script.js"></script>
     <script src="../js/video-pagination.js" defer></script>
+    <script scr="text/javascript">
+        function redirect(url) {
+            window.location.href = url + ".html"
+        }
+        var WebApp = window.Telegram.WebApp;
+        var BackButton = WebApp.BackButton;
+
+        BackButton.show();
+
+    </script>
 </head>
 <body onload="setcategory(); getUserVideosByTag(getcategory())">
     <div class="header">

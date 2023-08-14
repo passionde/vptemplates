@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="../css/styles.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="../js/script.js"></script>
+    <script scr="text/javascript">
+        function redirect(url) {
+            window.location.href = url + ".html"
+        }
+        var WebApp = window.Telegram.WebApp;
+        var BackButton = WebApp.BackButton;
+
+        BackButton.show();
+
+    </script>
 </head>
 <body style="height:100vh">
     <div class="header">
