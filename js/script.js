@@ -61,10 +61,10 @@ async function getUserInfo() {
 
     avatar.setAttribute("src", json.photo_url_160)
     name.innerHTML = json.username_or_first_name;
-    if (window.location.href === "http://127.0.0.1:5500/menu.html"){
+    if (window.location.href.split("/")[4] === "menu.html"){
         coins.innerHTML = json.vp_coins + " VPCoins";
         rating.innerHTML = "Рейтинг: " + json.rating;
-    } else if (window.location.href === "http://127.0.0.1:5500/profile.html") {
+    } else if (window.location.href.split("/")[4] === "profile.html") {
         coins.innerHTML = json.vp_coins + "<br> VPCoins";
         rating.innerHTML = json.rating + "<br>Рейтинг";
     }
@@ -493,6 +493,11 @@ function notify(Type, video="") {
             notificationButtonText.innerHTML = "Продолжить";
             notificationButton.setAttribute("onclick", "redirect('myvideos')");
             break;
+        case "opponentWasNotFound":
+            notificationHeader.innerHTML = "Противник не найден";
+            notificationButtonText.innerHTML = "Продолжить";
+            notificationButton.setAttribute("onclick", "redirect('myvideos')");
+            break;
     };
 
     notification.setAttribute("class", "notification");
@@ -520,13 +525,15 @@ function getUrl() {
 function sendcategory(cat) {
     localStorage.setItem("category", cat)
 };
+
 function setcategory() {
     let asd = document.querySelector(".asd")
     asd.innerHTML = localStorage.getItem("category");
 };
+
 function getcategory() {
     return localStorage.getItem("category")
-}
+};
 
 function battle() {
     let cardGrid = document.querySelector(".card-grid");

@@ -38,7 +38,7 @@ function mark(video, videoId) {
     marked_videos[0].remove()
   }
   let mark = document.createElement("img");
-  mark.setAttribute("src", "img/checkmark.png");
+  mark.setAttribute("src", "../img/checkmark.png");
   mark.setAttribute("class", "marked")
   mark.setAttribute("id", videoId)
   video.appendChild(mark);

@@ -32,6 +32,14 @@
     <div class="button" onclick="redirect('menu')">
         <p>На главную</p>
     </div>
+    <script scr="text/javascript">
+        var WebApp = window.Telegram.WebApp;
+        var MainButton = WebApp.MainButton;
+
+        MainButton.show();
+
+        MainButton.onClick(redirect("profile"))
+    </script>
 </body>
 </html>
 

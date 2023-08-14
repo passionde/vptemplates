@@ -73,13 +73,14 @@ async function getTags() {
 
     // Детект скролла
     listOfElements.addEventListener('scroll', function() {
-        if (listOfElements.scrollTop + listOfElements.clientHeight >= listOfElements.scrollHeight-20) {
+        if (listOfElements.scrollTop + listOfElements.clientHeight >= listOfElements.scrollHeight) {
         loadmore();
         }
     });
 
     // Добавление новой категории при загрузке страницы, чтобы активировался весь скролл
     loadmore();
+
 
 
     // При слишком быстром скролле, активным может быть элемент не по середине, а более верхний. Встречается редко
