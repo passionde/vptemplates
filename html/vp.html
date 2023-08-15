@@ -10,10 +10,12 @@
     <script scr="text/javascript">
         var WebApp = window.Telegram.WebApp;
         var BackButton = WebApp.BackButton;
+        var PopupParams = WebApp.PopupParams;
 
         BackButton.onClick(() => {window.location.href = 'menu.html'})
         BackButton.show();
 
+        PopupParams.title = "Бросить вызов"
     </script>
 </head>
 <body onload="getCurrentBattlesByTag(); getTags()">

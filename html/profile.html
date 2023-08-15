@@ -32,12 +32,15 @@
         var WebApp = window.Telegram.WebApp;
         var MainButton = WebApp.MainButton;
         var BackButton = WebApp.BackButton;
+        var PopupParams = WebApp.PopupParams;
 
         MainButton.setText("На главную");
         MainButton.show();
         BackButton.show();
 
         MainButton.onClick(() => {window.location.href = "menu.html"})
+
+        PopupParams.title = "Профиль"
     </script>
 </body>
 </html>

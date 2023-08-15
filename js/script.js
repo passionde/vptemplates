@@ -105,7 +105,7 @@ async function getUserAllVideos() {
             videos.appendChild(video_row);
         }
 
-        profileIframe.append(bin);
+        // profileIframe.append(bin);
         profileIframe.appendChild(video);
         videos.append(profileIframe)
         video_row.appendChild(profileIframe);
