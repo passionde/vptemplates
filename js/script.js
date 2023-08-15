@@ -8,6 +8,13 @@ const pages = {
         <div class="card-grid">
         </div>
     </div>
+    <script type="text/javascript">
+    var WebApp = window.Telegram.WebApp;
+    var BackButton = WebApp.BackButton;
+
+    BackButton.onClick(() => {window.location.href = 'menu.html'})
+    BackButton.show();
+</script>
 </body>`,
     challenge:  `<body onload="getTags()">
     <ul class="categories">
@@ -17,6 +24,13 @@ const pages = {
         <li class="category-inactive">#dance</li>
         <li class="category-inactive">#beatbox</li>
     </ul>
+    <script type="text/javascript">
+    var WebApp = window.Telegram.WebApp;
+    var BackButton = WebApp.BackButton;
+
+    BackButton.onClick(() => {window.location.href = 'menu.html'})
+    BackButton.show();
+</script>
 </body>`,
     menu:   `<body onload="getUserInfo()">
     <div class="about">
@@ -44,7 +58,13 @@ const pages = {
     <div class="button" onclick="redirect('shop')">
         <div class="challenge-text">Магазин</div>
     </div>
-    
+    <script type="text/javascript">
+    var WebApp = window.Telegram.WebApp;
+    var BackButton = WebApp.BackButton;
+
+    BackButton.onClick(() => {window.location.href = 'menu.html'})
+    BackButton.show();
+</script>
 </body>`,
     myvideos:   `<body>
     <div style="margin-top:7vh;font-size:4vh;">
@@ -55,6 +75,13 @@ const pages = {
     </div>
 
     <div class="challenge" onclick="appointBattle()"><div class="challenge-text">Бросить вызов</div></div>
+    <script type="text/javascript">
+    var WebApp = window.Telegram.WebApp;
+    var BackButton = WebApp.BackButton;
+
+    BackButton.onClick(() => {window.location.href = 'menu.html'})
+    BackButton.show();
+</script>
 </body>`,
     profile: `<body onload="getUserInfo(); getUserAllVideos()">
     <div class="about">
@@ -80,9 +107,23 @@ const pages = {
     </div>
     <div class="videos">        
     </div>
+    <script type="text/javascript">
+    var WebApp = window.Telegram.WebApp;
+    var BackButton = WebApp.BackButton;
+
+    BackButton.onClick(() => {window.location.href = 'menu.html'})
+    BackButton.show();
+</script>
 </body>`,
     shop:   `<body>
     <div style="margin: 40vh auto 0 auto; font-size: 3vh;" align="center"><i>Скоро здесь что-нибудь появится...</i></div>
+    <script type="text/javascript">
+    var WebApp = window.Telegram.WebApp;
+    var BackButton = WebApp.BackButton;
+
+    BackButton.onClick(() => {window.location.href = 'menu.html'})
+    BackButton.show();
+</script>
 </body>`,
     vp: `<body onload="getCurrentBattlesByTag(); getTags()">
     <div class="tags">
@@ -90,6 +131,13 @@ const pages = {
 
     <div class="battles">
     </div>
+    <script type="text/javascript">
+    var WebApp = window.Telegram.WebApp;
+    var BackButton = WebApp.BackButton;
+
+    BackButton.onClick(() => {window.location.href = 'menu.html'})
+    BackButton.show();
+</script>
 </body>`,
     yt: `<body style="height:100vh">
 
@@ -105,6 +153,13 @@ const pages = {
         </div>
 
     </div>
+    <script type="text/javascript">
+    var WebApp = window.Telegram.WebApp;
+    var BackButton = WebApp.BackButton;
+
+    BackButton.onClick(() => {window.location.href = 'menu.html'})
+    BackButton.show();
+</script>
 </body>>`
 }
 
@@ -194,15 +249,13 @@ function redirect(url) {
     newBody.appendChild(bodyContent)
     html.appendChild(newBody)
 }
-// function redirect(url) {
-//     window.location.href = url + ".html"
-// }
+
 async function getUserVideosByTag(tag) {
     let response = await fetch('https://vpchallenge.tw1.su/api/video/get-user-videos-by-tag', {
         method: 'POST',
         headers: {
           'accept': 'application/json',
-          'init-data': 'query_id=AAGCAL0_AAAAAIIAvT9m-88z&user=%7B%22id%22%3A1069351042%2C%22first_name%22%3A%22Yaroslav%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22passionfde%22%2C%22language_code%22%3A%22ru%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1690396687&hash=b44292a9c1e418084508345ac62d3bd5588c5a181212c75930932fe0f2ddd1bf',
+          'init-data': window.Telegram.WebApp.initData,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
@@ -247,7 +300,7 @@ async function getUserInfo() {
         method: 'POST',
         headers: {
         'Accept': 'application/json',
-        'Init-data': "query_id=AAGCAL0_AAAAAIIAvT9m-88z&user=%7B%22id%22%3A1069351042%2C%22first_name%22%3A%22Yaroslav%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22passionfde%22%2C%22language_code%22%3A%22ru%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1690396687&hash=b44292a9c1e418084508345ac62d3bd5588c5a181212c75930932fe0f2ddd1bf",
+        'Init-data': window.Telegram.WebApp.initData,
         "Content-Type": "applitcation/json"
         },
         body : null
@@ -272,7 +325,7 @@ async function getUserAllVideos() {
         method: 'POST',
         headers: {
         'Accept': 'application/json',
-        'Init-data': "query_id=AAGCAL0_AAAAAIIAvT9m-88z&user=%7B%22id%22%3A1069351042%2C%22first_name%22%3A%22Yaroslav%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22passionfde%22%2C%22language_code%22%3A%22ru%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1690396687&hash=b44292a9c1e418084508345ac62d3bd5588c5a181212c75930932fe0f2ddd1bf",
+        'Init-data': window.Telegram.WebApp.initData,
         "Content-Type": "applitcation/json"
         },
         body : null
@@ -313,7 +366,7 @@ async function addNewVideo(url) {
         method: 'POST',
         headers: {
           'accept': 'application/json',
-          'init-data': 'query_id=AAGCAL0_AAAAAIIAvT9m-88z&user=%7B%22id%22%3A1069351042%2C%22first_name%22%3A%22Yaroslav%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22passionfde%22%2C%22language_code%22%3A%22ru%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1690396687&hash=b44292a9c1e418084508345ac62d3bd5588c5a181212c75930932fe0f2ddd1bf',
+          'init-data': window.Telegram.WebApp.initData,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
@@ -336,7 +389,6 @@ async function addNewVideo(url) {
       } else if (json.detail.error_code == 6) {
         notify("VideoHasBeenRestored")
       }
-      console.log(json)
 };
 
 async function deleteVideo(videoId) {
@@ -344,7 +396,7 @@ async function deleteVideo(videoId) {
         method: 'POST',
         headers: {
           'accept': 'application/json',
-          'init-data': 'query_id=AAGCAL0_AAAAAIIAvT9m-88z&user=%7B%22id%22%3A1069351042%2C%22first_name%22%3A%22Yaroslav%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22passionfde%22%2C%22language_code%22%3A%22ru%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1690396687&hash=b44292a9c1e418084508345ac62d3bd5588c5a181212c75930932fe0f2ddd1bf',
+          'init-data': window.Telegram.WebApp.initData,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
@@ -368,7 +420,7 @@ async function appointBattle() {
         url:'https://vpchallenge.tw1.su/api/battle/assign-random-opponent',
         headers:{
             'accept': 'application/json',
-            'init-data': 'query_id=AAGCAL0_AAAAAIIAvT9m-88z&user=%7B%22id%22%3A1069351042%2C%22first_name%22%3A%22Yaroslav%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22passionfde%22%2C%22language_code%22%3A%22ru%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1690396687&hash=b44292a9c1e418084508345ac62d3bd5588c5a181212c75930932fe0f2ddd1bf',
+            'init-data': window.Telegram.WebApp.initData,
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
@@ -390,7 +442,7 @@ async function appointBattle() {
         url:'https://vpchallenge.tw1.su/api/battle/appoint-battle',
         headers:{
             'accept': 'application/json',
-            'init-data': 'query_id=AAGCAL0_AAAAAIIAvT9m-88z&user=%7B%22id%22%3A1069351042%2C%22first_name%22%3A%22Yaroslav%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22passionfde%22%2C%22language_code%22%3A%22ru%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1690396687&hash=b44292a9c1e418084508345ac62d3bd5588c5a181212c75930932fe0f2ddd1bf',
+            'init-data': window.Telegram.WebApp.initData,
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
@@ -429,7 +481,7 @@ async function getCurrentBattlesByTag() {
     const url = 'https://vpchallenge.tw1.su/api/battle/get-current-battles-by-tag';
     const headers = {
         'accept': 'application/json',
-        'init-data': 'query_id=AAGCAL0_AAAAAIIAvT9m-88z&user=%7B%22id%22%3A1069351042%2C%22first_name%22%3A%22Yaroslav%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22passionfde%22%2C%22language_code%22%3A%22ru%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1690396687&hash=b44292a9c1e418084508345ac62d3bd5588c5a181212c75930932fe0f2ddd1bf',
+        'init-data': window.Telegram.WebApp.initData,
         'Content-Type': 'application/json'
       };
     const body = JSON.stringify({
@@ -550,7 +602,7 @@ async function getTags() {
         method: 'POST',
         headers: {
         'Accept': 'application/json',
-        'Init-data': "query_id=AAGCAL0_AAAAAIIAvT9m-88z&user=%7B%22id%22%3A1069351042%2C%22first_name%22%3A%22Yaroslav%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22passionfde%22%2C%22language_code%22%3A%22ru%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1690396687&hash=b44292a9c1e418084508345ac62d3bd5588c5a181212c75930932fe0f2ddd1bf",
+        'Init-data': window.Telegram.WebApp.initData,
         "Content-Type": "applitcation/json"
         },
         body : null
@@ -797,7 +849,7 @@ async function InfiniteScrollGetTags() {
         method: 'POST',
         headers: {
         'Accept': 'application/json',
-        'Init-data': "query_id=AAGCAL0_AAAAAIIAvT9m-88z&user=%7B%22id%22%3A1069351042%2C%22first_name%22%3A%22Yaroslav%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22passionfde%22%2C%22language_code%22%3A%22ru%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1690396687&hash=b44292a9c1e418084508345ac62d3bd5588c5a181212c75930932fe0f2ddd1bf",
+        'Init-data': window.Telegram.WebApp.initData,
         "Content-Type": "applitcation/json"
         },
         body : null
