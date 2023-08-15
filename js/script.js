@@ -8,13 +8,6 @@ const pages = {
         <div class="card-grid">
         </div>
     </div>
-    <script type="text/javascript">
-    var WebApp = window.Telegram.WebApp;
-    var BackButton = WebApp.BackButton;
-
-    BackButton.onClick(() => {window.location.href = 'menu.html'})
-    BackButton.show();
-</script>
 </body>`,
     challenge:  `<body onload="getTags()">
     <ul class="categories">
@@ -24,13 +17,6 @@ const pages = {
         <li class="category-inactive">#dance</li>
         <li class="category-inactive">#beatbox</li>
     </ul>
-    <script type="text/javascript">
-    var WebApp = window.Telegram.WebApp;
-    var BackButton = WebApp.BackButton;
-
-    BackButton.onClick(() => {window.location.href = 'menu.html'})
-    BackButton.show();
-</script>
 </body>`,
     menu:   `<body onload="getUserInfo()">
     <div class="about">
@@ -58,13 +44,6 @@ const pages = {
     <div class="button" onclick="redirect('shop')">
         <div class="challenge-text">Магазин</div>
     </div>
-    <script type="text/javascript">
-    var WebApp = window.Telegram.WebApp;
-    var BackButton = WebApp.BackButton;
-
-    BackButton.onClick(() => {window.location.href = 'menu.html'})
-    BackButton.show();
-</script>
 </body>`,
     myvideos:   `<body>
     <div style="margin-top:7vh;font-size:4vh;">
@@ -75,13 +54,6 @@ const pages = {
     </div>
 
     <div class="challenge" onclick="appointBattle(); notify('lookingForOpponent')"><div class="challenge-text">Бросить вызов</div></div>
-    <script type="text/javascript">
-    var WebApp = window.Telegram.WebApp;
-    var BackButton = WebApp.BackButton;
-
-    BackButton.onClick(() => {window.location.href = 'menu.html'})
-    BackButton.show();
-</script>
 </body>`,
     profile: `<body onload="getUserInfo(); getUserAllVideos()">
     <div class="about">
@@ -107,23 +79,9 @@ const pages = {
     </div>
     <div class="videos">        
     </div>
-    <script type="text/javascript">
-    var WebApp = window.Telegram.WebApp;
-    var BackButton = WebApp.BackButton;
-
-    BackButton.onClick(() => {window.location.href = 'menu.html'})
-    BackButton.show();
-</script>
 </body>`,
     shop:   `<body>
     <div style="margin: 40vh auto 0 auto; font-size: 3vh;" align="center"><i>Скоро здесь что-нибудь появится...</i></div>
-    <script type="text/javascript">
-    var WebApp = window.Telegram.WebApp;
-    var BackButton = WebApp.BackButton;
-
-    BackButton.onClick(() => {window.location.href = 'menu.html'})
-    BackButton.show();
-</script>
 </body>`,
     vp: `<body onload="getCurrentBattlesByTag(); getTags()">
     <div class="tags">
@@ -131,13 +89,6 @@ const pages = {
 
     <div class="battles">
     </div>
-    <script type="text/javascript">
-    var WebApp = window.Telegram.WebApp;
-    var BackButton = WebApp.BackButton;
-
-    BackButton.onClick(() => {window.location.href = 'menu.html'})
-    BackButton.show();
-</script>
 </body>`,
     yt: `<body style="height:100vh">
 
@@ -153,13 +104,6 @@ const pages = {
         </div>
 
     </div>
-    <script type="text/javascript">
-    var WebApp = window.Telegram.WebApp;
-    var BackButton = WebApp.BackButton;
-
-    BackButton.onClick(() => {window.location.href = 'menu.html'})
-    BackButton.show();
-</script>
 </body>`
 }
 
