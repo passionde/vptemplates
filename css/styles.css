@@ -335,7 +335,7 @@ li {
 
 .profileIframe-img {
     position: relative;
-    margin: 0 0 0 -92px;
+    margin: 10px 0 0 -92px;
     left:0;
     top:-2.07vh;
 }
