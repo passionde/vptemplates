@@ -502,7 +502,7 @@ async function getCurrentBattlesByTag() {
     if(loadMore != null) {
         loadMore.remove();
     }
-    
+
     battles.remove();
     console.log(json, tag)
     drawBattles(json)
@@ -515,7 +515,7 @@ function drawBattles(json) {
 
     loadMore.innerHTML = "Загрузить ещё"
 
-    loadMore.setAttribute("style", "border:1px solid #DADADA; border-radius:20px; width: 35vw; margin: 0 auto 0 auto;");
+    loadMore.setAttribute("style", "border:1px solid #DADADA; border-radius:20px; width: 35vw; margin: 0 auto 0 auto;text-aling:center;");
     loadMore.setAttribute("class", "loadMore");
     loadMore.setAttribute("onclick", "getCurrentBattlesByTag()")
 
