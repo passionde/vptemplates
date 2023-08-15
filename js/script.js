@@ -476,7 +476,6 @@ async function appointBattle() {
 }
 let pageCounter = 0;
 async function getCurrentBattlesByTag() {
-    pageCounter++;
 
     const tag = document.querySelector(".tag-active").innerHTML.replace("#", "");
     const url = 'https://vpchallenge.tw1.su/api/battle/get-current-battles-by-tag';
