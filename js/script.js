@@ -1,8 +1,146 @@
-var WebApp = window.Telegram.WebApp;
-var initData = WebApp.initData;
-WebApp.expand();
+const pages = {
+    battle: `<body onload="battle()">
+                <div>
+                    <div class="blue-gradiented-text" style="font-size:3vh;margin: 4vh 0 4vh 4vw;">
+                        <i class="asd"></i>
+                    </div>
 
+                    <div class="card-grid">
+                    </div>
+                </div>
+            </body>`,
+    challenge:  `<body onload="getTags()">
+                    <ul class="categories">
+                        <li class="category-inactive">#random</li>
+                        <li class="category-inactive">#vocal</li>
+                        <li class="category-inactive">#sport</li>
+                        <li class="category-inactive">#dance</li>
+                        <li class="category-inactive">#beatbox</li>
+                    </ul>
+                </body>`,
+    menu:   `<body onload="getUserInfo()">
+                <div class="about">
+                    <img src="" class="avatar">
+                    <div class="wrapper">
+                        <div class="name"></div>
+                        <div class="rating"></div>
+                    </div>
+                </div>
 
+                <div class="coins"></div>
+
+                <div class="button" onclick="redirect('vp')">
+                    <div class="challenge-text">VP</div>
+                </div>
+
+                <div class="button" onclick="redirect('challenge')">
+                    <div class="challenge-text">Бросить вызов</div>
+                </div>
+
+                <div class="button" onclick="redirect('profile')">
+                    <div class="challenge-text">Профиль</div>
+                </div>
+
+                <div class="button" onclick="redirect('shop')">
+                    <div class="challenge-text">Магазин</div>
+                </div>
+    
+            </body>`,
+    myvideos:   `<body onload="setcategory(); getUserVideosByTag(getcategory())">
+                    <div style="margin-top:7vh;font-size:4vh;">
+                        Выберите видео &nbsp;<div class="blue-gradiented-text"><i class="asd"></i></div>
+                    </div>
+
+                    <div class="videos">
+                    </div>
+
+                    <div class="challenge" onclick="appointBattle()"><div class="challenge-text">Бросить вызов</div></div>
+                </body>`,
+    profile: `<body onload="getUserInfo(); getUserAllVideos()">
+                <div class="about">
+                    <div class="rating"  style="font-size:3.5vh;
+                                                margin:auto;
+                                                text-align: center;"></div>
+                    <img src="" class="avatar">
+                    <div class="coins"   style="font-size:3.5vh;
+                                                margin:auto;
+                                                text-align: center;"></div>
+                </div>
+
+                <div class="name" align="center"></div>
+
+                <div class="add-clip" align="center" onclick="redirect('yt');">
+                    <p class="add-clip-text">Добавить клип</p>
+                </div>
+
+                <div class="videos">        
+                </div>
+            </body>`,
+    shop:   `<body>
+                <div style="margin: 40vh auto 0 auto; font-size: 3vh;" align="center"><i>Скоро здесь что-нибудь появится...</i></div>
+            </body>`,
+    vp: `<body onload="getCurrentBattlesByTag(); getTags()">
+            <div class="tags">
+            </div>
+
+            <div class="battles">
+            </div>
+        </body>`,
+    yt: `<body style="height:100vh">
+
+            <div class="yt-connect" align="center">
+
+                <div style="margin: 3vh 0 2.5vh 0;">Ссылка на ваше видео YouTube Shorts</div>
+
+                <input type="url" placeholder="https://www.youtube.com/shorts/SHORTSID"/>
+
+                <div class="buttons-horizontal">
+                    <div class="cancel" onclick="redirect('menu')">Отмена</div>
+                    <div class="submit" onclick="addNewVideo(getUrl())"><div class="submit-text">ОК</div></div>
+                </div>
+
+            </div>
+        </body>`
+}
+
+function redirect(url) {
+    let head = document.querySelector('head');
+    let body = document.querySelector('body');
+    let new_body;
+
+    body.remove();
+
+    switch(url) {
+        case 'battle':
+            new_body = pages.battle;
+            break;
+        case 'challenge':
+            new_body = pages.challenge;
+            break;
+        case 'menu':
+            new_body = pages.menu;
+            break;
+        case 'myvideos':
+            new_body = pages.myvideos;
+            break;
+        case 'profile':
+            new_body = pages.profile;
+            break;
+        case 'shop':
+            new_body = pages.shop;
+            break;
+        case 'vp':
+            new_body = pages.vp;
+            break;
+        case 'yt':
+            new_body = pages.yt;
+            break;
+    }
+    head.insertAdjacentHTML("afterend", new_body)
+}
+// function redirect(url) {
+//     window.location.href = url + ".html"
+// }
 async function getUserVideosByTag(tag) {
     let response = await fetch('https://vpchallenge.tw1.su/api/video/get-user-videos-by-tag', {
         method: 'POST',
@@ -368,10 +506,6 @@ async function getTags() {
         tag.setAttribute("onclick", `MakeActive('${json.tags_names[i]}', getCurrentBattlesByTag())`)
         tags.appendChild(tag);
     }
-}
-
-function redirect(url) {
-    window.location.href = url + ".html"
 }
 
 function MakeActive(Tag) {
