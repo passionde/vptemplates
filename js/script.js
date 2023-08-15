@@ -233,8 +233,8 @@ function redirect(url) {
             newBody.appendChild(bodyContent)
             html.appendChild(newBody)
 
-            getCurrentBattlesByTag();
             getTags();
+            getCurrentBattlesByTag();
             break;
         case 'yt':
             bodyContent.innerHTML = pages.yt;
@@ -474,8 +474,10 @@ async function appointBattle() {
         notify("DifferentTags");
     }
 }
-let pageCounter = 1;
+let pageCounter = 0;
 async function getCurrentBattlesByTag() {
+    pageCounter++;
+
     const tag = document.querySelector(".tag-active").innerHTML.replace("#", "");
     const url = 'https://vpchallenge.tw1.su/api/battle/get-current-battles-by-tag';
     const headers = {
@@ -495,6 +497,9 @@ async function getCurrentBattlesByTag() {
 
     let json = await response.json();
     let battles = document.querySelector(".battles");
+    const loadMore = document.querySelector('.loadMore');
+    
+    loadMore.remove();
 
     battles.remove();
     console.log(json, tag)
@@ -508,7 +513,10 @@ function drawBattles(json) {
 
     loadMore.innerHTML = "Загрузить ещё"
 
-    loadMore.setAttribute("style", "border:1px solid #DADADA; border-radius:20px");
+    loadMore.setAttribute("style", "border:1px solid #DADADA; border-radius:20px; width: 35vw; margin: 0 auto 0 auto;");
+    loadMore.setAttribute("class", "loadMore");
+    loadMore.setAttribute("onclick", "getCurrentBattlesByTag()")
+
     battles.setAttribute("class", "battles")
 
     for(let i = 0; i < json.items.length; i++) {
