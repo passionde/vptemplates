@@ -60,15 +60,10 @@ async function getUserInfo() {
     let avatar = document.querySelector(".avatar");
 
     avatar.setAttribute("src", json.photo_url_160)
+
     name.innerHTML = json.username_or_first_name;
-    if (window.location.href.split("/")[5] == "menu.html"){
-        coins.innerHTML = json.vp_coins + " VPCoins";
-        rating.innerHTML = "Рейтинг: " + json.rating;
-    } 
-    if (window.location.href.split("/")[5] == "profile.html") {
-        coins.innerHTML = json.vp_coins + "<br> VPCoins";
-        rating.innerHTML = json.rating + "<br>Рейтинг";
-    }
+    coins.innerHTML = json.vp_coins + " VPCoins";
+    rating.innerHTML = "Рейтинг: " + json.rating;
 
 };
 
