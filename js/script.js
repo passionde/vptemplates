@@ -498,7 +498,7 @@ async function getCurrentBattlesByTag() {
     let battles = document.querySelector(".battles");
 
     battles.remove();
-    
+    console.log(json)
     drawBattles(json)
 }
 
@@ -508,7 +508,7 @@ function drawBattles(json) {
 
     battles.setAttribute("class", "battles")
 
-    for(let i = 0; i < 5; i++) {
+    for(let i = 0; i < json.items.length; i++) {
         let battle = document.createElement("div");
 
         let battleLeft = document.createElement("div");
