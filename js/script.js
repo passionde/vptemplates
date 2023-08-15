@@ -475,6 +475,9 @@ async function appointBattle() {
     }
 }
 let pageCounter = 0;
+function pageCounterPlusPlus() {
+    pageCounter++;
+}
 async function getCurrentBattlesByTag() {
 
     const tag = document.querySelector(".tag-active").innerHTML.replace("#", "");
@@ -514,9 +517,9 @@ function drawBattles(json) {
 
     loadMore.innerHTML = "Загрузить ещё"
 
-    loadMore.setAttribute("style", "border:1px solid #DADADA; border-radius:20px; width: 35vw; margin: 0 auto 0 auto;text-aling:center;");
+    loadMore.setAttribute("style", "border:1px solid #DADADA; border-radius:20px; width: 34vw; margin: 0 auto 0 auto;text-align:center;");
     loadMore.setAttribute("class", "loadMore");
-    loadMore.setAttribute("onclick", "getCurrentBattlesByTag()")
+    loadMore.setAttribute("onclick", `pageCounterPlusPlus(); getCurrentBattlesByTag()`)
 
     battles.setAttribute("class", "battles")
 
