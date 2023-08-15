@@ -499,8 +499,10 @@ async function getCurrentBattlesByTag() {
     let battles = document.querySelector(".battles");
     const loadMore = document.querySelector('.loadMore');
     
-    loadMore.remove();
-
+    if(loadMore != null) {
+        loadMore.remove();
+    }
+    
     battles.remove();
     console.log(json, tag)
     drawBattles(json)
