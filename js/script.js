@@ -106,37 +106,39 @@ const pages = {
 function redirect(url) {
     let head = document.querySelector('head');
     let body = document.querySelector('body');
-    let new_body;
+    let newBody = documnet.createElement('body')
+    let bodyContent;
 
     body.remove();
 
     switch(url) {
         case 'battle':
-            new_body = pages.battle;
+            bodyContent = pages.battle;
             break;
         case 'challenge':
-            new_body = pages.challenge;
+            bodyContent = pages.challenge;
             break;
         case 'menu':
-            new_body = pages.menu;
+            bodyContent = pages.menu;
             break;
         case 'myvideos':
-            new_body = pages.myvideos;
+            bodyContent = pages.myvideos;
             break;
         case 'profile':
-            new_body = pages.profile;
+            bodyContent = pages.profile;
             break;
         case 'shop':
-            new_body = pages.shop;
+            bodyContent = pages.shop;
             break;
         case 'vp':
-            new_body = pages.vp;
+            bodyContent = pages.vp;
             break;
         case 'yt':
-            new_body = pages.yt;
+            bodyContent = pages.yt;
             break;
     }
-    head.insertAdjacentHTML("afterend", new_body)
+    newBody.appendChild(bodyContent)
+    head.insertAdjacentHTML("afterend", newBody)
 }
 // function redirect(url) {
 //     window.location.href = url + ".html"
