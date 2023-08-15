@@ -1,144 +1,191 @@
 const pages = {
     battle: `<body onload="battle()">
-                <div>
-                    <div class="blue-gradiented-text" style="font-size:3vh;margin: 4vh 0 4vh 4vw;">
-                        <i class="asd"></i>
-                    </div>
+    <div>
+        <div class="blue-gradiented-text" style="font-size:3vh;margin: 4vh 0 4vh 4vw;">
+            <i class="asd"></i>
+        </div>
 
-                    <div class="card-grid">
-                    </div>
-                </div>
-            </body>`,
+        <div class="card-grid">
+        </div>
+    </div>
+</body>`,
     challenge:  `<body onload="getTags()">
-                    <ul class="categories">
-                        <li class="category-inactive">#random</li>
-                        <li class="category-inactive">#vocal</li>
-                        <li class="category-inactive">#sport</li>
-                        <li class="category-inactive">#dance</li>
-                        <li class="category-inactive">#beatbox</li>
-                    </ul>
-                </body>`,
+    <ul class="categories">
+        <li class="category-inactive">#random</li>
+        <li class="category-inactive">#vocal</li>
+        <li class="category-inactive">#sport</li>
+        <li class="category-inactive">#dance</li>
+        <li class="category-inactive">#beatbox</li>
+    </ul>
+</body>`,
     menu:   `<body onload="getUserInfo()">
-                <div class="about">
-                    <img src="" class="avatar">
-                    <div class="wrapper">
-                        <div class="name"></div>
-                        <div class="rating"></div>
-                    </div>
-                </div>
+    <div class="about">
+        <img src="" class="avatar">
+        <div class="wrapper">
+            <div class="name"></div>
+            <div class="rating"></div>
+        </div>
+    </div>
 
-                <div class="coins"></div>
+    <div class="coins"></div>
 
-                <div class="button" onclick="redirect('vp')">
-                    <div class="challenge-text">VP</div>
-                </div>
+    <div class="button" onclick="redirect('vp')">
+        <div class="challenge-text">VP</div>
+    </div>
 
-                <div class="button" onclick="redirect('challenge')">
-                    <div class="challenge-text">Бросить вызов</div>
-                </div>
+    <div class="button" onclick="redirect('challenge')">
+        <div class="challenge-text">Бросить вызов</div>
+    </div>
 
-                <div class="button" onclick="redirect('profile')">
-                    <div class="challenge-text">Профиль</div>
-                </div>
+    <div class="button" onclick="redirect('profile')">
+        <div class="challenge-text">Профиль</div>
+    </div>
 
-                <div class="button" onclick="redirect('shop')">
-                    <div class="challenge-text">Магазин</div>
-                </div>
+    <div class="button" onclick="redirect('shop')">
+        <div class="challenge-text">Магазин</div>
+    </div>
     
-            </body>`,
+</body>`,
     myvideos:   `<body onload="setcategory(); getUserVideosByTag(getcategory())">
-                    <div style="margin-top:7vh;font-size:4vh;">
-                        Выберите видео &nbsp;<div class="blue-gradiented-text"><i class="asd"></i></div>
-                    </div>
+    <div style="margin-top:7vh;font-size:4vh;">
+        Выберите видео &nbsp;<div class="blue-gradiented-text"><i class="asd"></i></div>
+    </div>
 
-                    <div class="videos">
-                    </div>
+    <div class="videos">
+    </div>
 
-                    <div class="challenge" onclick="appointBattle()"><div class="challenge-text">Бросить вызов</div></div>
-                </body>`,
+    <div class="challenge" onclick="appointBattle()"><div class="challenge-text">Бросить вызов</div></div>
+</body>`,
     profile: `<body onload="getUserInfo(); getUserAllVideos()">
-                <div class="about">
-                    <div class="rating"  style="font-size:3.5vh;
-                                                margin:auto;
-                                                text-align: center;"></div>
-                    <img src="" class="avatar">
-                    <div class="coins"   style="font-size:3.5vh;
-                                                margin:auto;
-                                                text-align: center;"></div>
-                </div>
+    <div class="about">
+        <div class="rating"  style="font-size:3.5vh;
+                                    margin:auto;
+                                    text-align: center;"></div>
+        <img src="" class="avatar">
+        <div class="coins"   style="font-size:3.5vh;
+                                    margin:auto;
+                                    text-align: center;"></div>
+    </div>
 
-                <div class="name" align="center"></div>
+    <div class="name" align="center"></div>
 
-                <div class="add-clip" align="center" onclick="redirect('yt');">
-                    <p class="add-clip-text">Добавить клип</p>
-                </div>
+    <div class="add-clip" align="center" onclick="redirect('yt');">
+        <p class="add-clip-text">Добавить клип</p>
+    </div>
 
-                <div class="videos">        
-                </div>
-            </body>`,
+    <div class="videos">        
+    </div>
+</body>`,
     shop:   `<body>
-                <div style="margin: 40vh auto 0 auto; font-size: 3vh;" align="center"><i>Скоро здесь что-нибудь появится...</i></div>
-            </body>`,
+    <div style="margin: 40vh auto 0 auto; font-size: 3vh;" align="center"><i>Скоро здесь что-нибудь появится...</i></div>
+</body>`,
     vp: `<body onload="getCurrentBattlesByTag(); getTags()">
-            <div class="tags">
-            </div>
+    <div class="tags">
+    </div>
 
-            <div class="battles">
-            </div>
-        </body>`,
+    <div class="battles">
+    </div>
+</body>`,
     yt: `<body style="height:100vh">
 
-            <div class="yt-connect" align="center">
+    <div class="yt-connect" align="center">
 
-                <div style="margin: 3vh 0 2.5vh 0;">Ссылка на ваше видео YouTube Shorts</div>
+        <div style="margin: 3vh 0 2.5vh 0;">Ссылка на ваше видео YouTube Shorts</div>
 
-                <input type="url" placeholder="https://www.youtube.com/shorts/SHORTSID"/>
+        <input type="url" placeholder="https://www.youtube.com/shorts/SHORTSID"/>
 
-                <div class="buttons-horizontal">
-                    <div class="cancel" onclick="redirect('menu')">Отмена</div>
-                    <div class="submit" onclick="addNewVideo(getUrl())"><div class="submit-text">ОК</div></div>
-                </div>
+        <div class="buttons-horizontal">
+            <div class="cancel" onclick="redirect('menu')">Отмена</div>
+            <div class="submit" onclick="addNewVideo(getUrl())"><div class="submit-text">ОК</div></div>
+        </div>
 
-            </div>
-        </body>`
+    </div>
+</body>>`
 }
 
 function redirect(url) {
-    let head = document.querySelector('head');
+    let html = document.querySelector('html');
     let body = document.querySelector('body');
-    let newBody = documnet.createElement('body')
-    let bodyContent;
+    let head = document.querySelector('head');
 
-    body.remove();
+    let script = document.createElement('script');
+    let newBody = document.createElement('body');
+    let bodyContent = document.createElement('div');
+
+    body.remove()
 
     switch(url) {
         case 'battle':
-            bodyContent = pages.battle;
+            bodyContent.innerHTML = pages.battle;
+
+            newBody.appendChild(bodyContent)
+            html.appendChild(newBody)
+
+            battle();
             break;
         case 'challenge':
-            bodyContent = pages.challenge;
+            bodyContent.innerHTML = pages.challenge;
+
+            script.setAttribute("src", "../js/infinite-scroll.js")
+            script.toggleAttribute("defer")
+
+            head.appendChild(script)
+            newBody.appendChild(bodyContent)
+            html.appendChild(newBody)
+
+            InfiniteScrollGetTags();
             break;
         case 'menu':
-            bodyContent = pages.menu;
+            bodyContent.innerHTML = pages.menu;
+
+            newBody.appendChild(bodyContent)
+            html.appendChild(newBody)
+
+            getUserInfo();
             break;
         case 'myvideos':
-            bodyContent = pages.myvideos;
+            bodyContent.innerHTML = pages.myvideos;
+
+            newBody.appendChild(bodyContent)
+            html.appendChild(newBody)
+
+            setcategory();
+            getUserVideosByTag(getcategory());
             break;
         case 'profile':
-            bodyContent = pages.profile;
+            bodyContent.innerHTML = pages.profile;
+
+            newBody.appendChild(bodyContent)
+            html.appendChild(newBody)
+
+            getUserInfo();
+            getUserAllVideos();
             break;
         case 'shop':
-            bodyContent = pages.shop;
+            bodyContent.innerHTML = pages.shop;
+
+            newBody.appendChild(bodyContent)
+            html.appendChild(newBody)
             break;
         case 'vp':
-            bodyContent = pages.vp;
+            bodyContent.innerHTML = pages.vp;
+
+            newBody.appendChild(bodyContent)
+            html.appendChild(newBody)
+
+            getCurrentBattlesByTag();
+            getTags();
             break;
         case 'yt':
-            bodyContent = pages.yt;
+            bodyContent.innerHTML = pages.yt;
+
+            newBody.appendChild(bodyContent)
+            html.appendChild(newBody)
             break;
     }
+
     newBody.appendChild(bodyContent)
-    head.insertAdjacentHTML("afterend", newBody)
+    html.appendChild(newBody)
 }
 // function redirect(url) {
 //     window.location.href = url + ".html"
@@ -724,3 +771,91 @@ function battle() {
 }
 
 
+
+// Объявление массива категорий, можно дополнять
+async function InfiniteScrollGetTags() {
+    // Чтение нужного родителя
+    let listOfElements = document.querySelector(".categories");
+
+    let response= await fetch("https://vpchallenge.tw1.su/api/tags/get-tags", {
+        method: 'POST',
+        headers: {
+        'Accept': 'application/json',
+        'Init-data': "query_id=AAGCAL0_AAAAAIIAvT9m-88z&user=%7B%22id%22%3A1069351042%2C%22first_name%22%3A%22Yaroslav%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22passionfde%22%2C%22language_code%22%3A%22ru%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1690396687&hash=b44292a9c1e418084508345ac62d3bd5588c5a181212c75930932fe0f2ddd1bf",
+        "Content-Type": "applitcation/json"
+        },
+        body : null
+    });
+    let json = await response.json();
+    let tags = [];
+    for(let i = 0; i < json.tags_names.length; i++) {
+        tags.push("#" + json.tags_names[i])
+    }
+    let categories = tags;
+
+    // Счётчик загруженных категорий
+    let counter = 0; 
+
+    // Функция загрузки и удаления новых категорий
+    let loadmore = function() {
+
+        // Читает элементы с нужными классами
+        let eles = document.getElementsByClassName("category-inactive");
+        let eles_active = document.getElementsByClassName("category-active");
+
+        // Создаёт новый элемент
+        let item = document.createElement("li");
+
+        // Присваивает новому элементу нужный тэг и класс
+        item.innerText = categories[0]; 
+        item.className = "category-inactive"
+
+        // Добавляет и удаляет элементы из списка категорий для бесконечного цикла
+        categories.push(categories[0]);
+        categories.splice(0, 1);
+
+        // Добавление нового элемента в HTMLCollection (отображение в самом HTML-документе)
+        listOfElements.appendChild(item);
+
+        // Удаление элемента из HTML-документа
+        if (counter > 0) {
+            listOfElements.removeChild(eles[0]);
+        }
+
+        // Присваивание эленту по середине активного класса. Проверка на counter == 0 проводится, чтобы при загрузке страницы активным 
+        // был элемент именно по середине, а не нижний. По возможности избавиться от проверки
+        if(counter == 0) {
+            eles[2].className = "category-active";
+        }
+        else {
+            eles[1].className = "category-active"
+        };
+
+        // Присваивание более давнему активному элементу класс неактивного, чтобы не было сразу 2 активных элемента
+        // 2 активных элемента ломают весь бесконечный скролл из-за того, что eles читает только неактивные
+        if(eles_active.length > 1) {
+            eles_active[0].className = "category-inactive";
+            eles_active[0].setAttribute("onclick", "");
+        }
+
+        // Добавление активности выбранной категории 
+        eles_active[0].setAttribute("onclick", "redirect(`myvideos`); sendcategory(this.innerHTML)")
+
+        // Обновление счётчика категорий
+        counter++;
+    };
+
+    // Детект скролла
+    listOfElements.addEventListener('scroll', function() {
+        if (listOfElements.scrollTop + listOfElements.clientHeight >= listOfElements.scrollHeight) {
+        loadmore();
+        }
+    });
+
+    // Добавление новой категории при загрузке страницы, чтобы активировался весь скролл
+    loadmore();
+
+
+
+    // При слишком быстром скролле, активным может быть элемент не по середине, а более верхний. Встречается редко
+};
