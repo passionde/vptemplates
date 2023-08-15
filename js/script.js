@@ -462,15 +462,15 @@ async function appointBattle() {
 
     if (responseBattle.ok) {
         notify("opponentfound");
-    } else if (responseBattle.detail.error_code == 1) {
+    } else if (dataBattle.detail.error_code == 1) {
         notify("UserVideoWasNotFound");
-    } else if (responseBattle.detail.error_code == 2) {
+    } else if (dataBattle.detail.error_code == 2) {
         notify("OpponentVideoWasNotFound");
-    } else if (responseBattle.detail.error_code == 3) {
+    } else if (dataBattle.detail.error_code == 3) {
         notify("AccessDenied");
-    } else if (responseBattle.detail.error_code == 4) {
+    } else if (dataBattle.detail.error_code == 4) {
         notify("ThisVideoAlreadyAtBattle");
-    } else if (responseBattle.detail.error_code == 5) {
+    } else if (dataBattle.detail.error_code == 5) {
         notify("DifferentTags");
     }
 }
