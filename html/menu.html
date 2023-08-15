@@ -11,7 +11,11 @@
         var WebApp = window.Telegram.WebApp;
         var BackButton = WebApp.BackButton;
 
-        BackButton.onClick(() => {window.location.href = 'menu.html'})
+        if (window.location.href.split("/")[5] != "menu.html") {
+            BackButton.onClick(() => {window.location.href = 'menu.html'})
+        } else {
+            BackButton.onClick(() => {WebApp.close()})
+        }
         BackButton.show();
     </script>
 </head>

@@ -36,12 +36,12 @@ const pages = {
     <div class="about">
         <img src="" class="avatar">
         <div class="wrapper">
-            <div class="name"></div>
-            <div class="rating"></div>
+            <div class="name"><div style="color:white">undefined</div></div>
+            <div class="rating"><div style="color:white">undefined</div></div>
         </div>
     </div>
 
-    <div class="coins"></div>
+    <div class="coins"><div style="color:white">undefined</div></div>
 
     <div class="button" onclick="redirect('vp')">
         <div class="challenge-text">VP</div>
@@ -74,7 +74,7 @@ const pages = {
     <div class="videos">
     </div>
 
-    <div class="challenge" onclick="appointBattle(); redirect('menu')"><div class="challenge-text">Бросить вызов</div></div>
+    <div class="challenge" onclick="appointBattle(); notify('lookingForOpponent')"><div class="challenge-text">Бросить вызов</div></div>
     <script type="text/javascript">
     var WebApp = window.Telegram.WebApp;
     var BackButton = WebApp.BackButton;
@@ -528,13 +528,11 @@ function drawBattles(json) {
 
         let battleLeft = document.createElement("div");
         let battleLeftName = document.createElement("div");
-        let battleLeftScore = document.createElement("div")
         let battleLeftAvatar = document.createElement("img")
         let battleLeftAbout = document.createElement("div")
 
         let battleRight = document.createElement("div");
         let battleRightName = document.createElement("div");
-        let battleRightScore = document.createElement("div")
         let battleRightAvatar = document.createElement("img")
         let battleRightAbout = document.createElement("div")
 
@@ -546,7 +544,6 @@ function drawBattles(json) {
         battleLeftAbout.setAttribute("class", "battle-about");
         battleLeftAvatar.setAttribute("class", "battle-left battle-avatar");
         battleLeftName.setAttribute("class", "battle-name");
-        battleLeftScore.setAttribute("class", "battle-score");
 
         vs.setAttribute("class", "vs");
         vs.setAttribute("align", "center");
@@ -555,15 +552,12 @@ function drawBattles(json) {
         battleRightAbout.setAttribute("class", "battle-about");
         battleRightAvatar.setAttribute("class", "battle-right battle-avatar");
         battleRightName.setAttribute("class", "battle-name");
-        battleRightScore.setAttribute("class", "battle-score");
 
-        battleLeftScore.innerHTML = json.items[0].participant_1.likes_start;
         battleLeftName.innerHTML = json.items[0].participant_1.username_or_first_name;
         battleLeftAvatar.setAttribute("src", json.items[0].participant_1.photo_url_160)
 
         vs.innerHTML = "VS";
 
-        battleRightScore.innerHTML = json.items[0].participant_2.likes_start;
         battleRightName.innerHTML = json.items[0].participant_2.username_or_first_name;
         battleRightAvatar.setAttribute("src", json.items[0].participant_2.photo_url_160)
 
@@ -572,7 +566,6 @@ function drawBattles(json) {
         battleLeftAbout.appendChild(battleLeftAvatar);
         battleLeftAbout.appendChild(battleLeftName);
         battleLeft.appendChild(battleLeftAbout);
-        battleLeft.appendChild(battleLeftScore);
         battle.appendChild(battleLeft)
 
         battle.appendChild(vs)
@@ -580,7 +573,6 @@ function drawBattles(json) {
         battleRightAbout.appendChild(battleRightAvatar);
         battleRightAbout.appendChild(battleRightName);
         battleRight.appendChild(battleRightAbout);
-        battleRight.appendChild(battleRightScore);
         battle.appendChild(battleRight)
         battles.appendChild(battle);
     }
@@ -739,6 +731,10 @@ function notify(Type, video="") {
             notificationButtonText.innerHTML = "Продолжить";
             notificationButton.setAttribute("onclick", "redirect('myvideos')");
             break;
+        case "lookingForOpponent":
+            notificationHeader.innerHTML = "Ведётся поиск противника";
+            notificationText.innerHTML = "";
+            notificationText.setAttribute("class", "loader")
     };
 
     notification.setAttribute("class", "notification");
@@ -750,13 +746,21 @@ function notify(Type, video="") {
     notificationCancelButtonText.setAttribute("class", "notification-button-text");
     notificationCancelButtonText.setAttribute("align", "center");
 
-    body.appendChild(notification);
-    notification.appendChild(notificationHeader);
-    notification.appendChild(notificationText);
-    notification.appendChild(notificationButton);
-    notification.appendChild(notificationCancelButton);
-    notificationButton.appendChild(notificationButtonText);
-    notificationCancelButton.appendChild(notificationCancelButtonText);
+    if(Type != "lookingForOpponent") {
+        body.appendChild(notification);
+        notification.appendChild(notificationHeader);
+        notification.appendChild(notificationText);
+        notification.appendChild(notificationButton);
+        notification.appendChild(notificationCancelButton);
+        notificationButton.appendChild(notificationButtonText);
+        notificationCancelButton.appendChild(notificationCancelButtonText);
+    } else {
+        body.appendChild(notification);
+        notification.appendChild(notificationHeader);
+        notification.appendChild(notificationText);
+        notification.appendChild(notificationButton);
+        notification.appendChild(notificationCancelButton); 
+    }
 };
 
 function getUrl() {
