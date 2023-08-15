@@ -64,7 +64,8 @@ async function getUserInfo() {
     if (window.location.href.split("/")[5] == "menu.html"){
         coins.innerHTML = json.vp_coins + " VPCoins";
         rating.innerHTML = "Рейтинг: " + json.rating;
-    } else if (window.location.href.split("/")[5] == "profile.html") {
+    } 
+    if (window.location.href.split("/")[5] == "profile.html") {
         coins.innerHTML = json.vp_coins + "<br> VPCoins";
         rating.innerHTML = json.rating + "<br>Рейтинг";
     }

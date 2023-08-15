@@ -199,7 +199,7 @@ body {
 
 .coins {
     margin: 3vh 0 3vh 0;
-    font-size: 4vh;
+    font-size: 6vh;
     text-align: center;
 	color: transparent;    
 	-webkit-background-clip: text;
@@ -249,7 +249,7 @@ li {
 }
 
 .name {
-    font-size: 3vh;
+    font-size: 5vh;
     font-weight: bold;
 }
 
@@ -345,6 +345,10 @@ li {
     margin: 0 0 0 -92px;
     left:0;
 
+}
+
+.rating {
+    font-size: 6vh;
 }
 
 .submit {
