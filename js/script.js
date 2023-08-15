@@ -160,7 +160,7 @@ const pages = {
     BackButton.onClick(() => {window.location.href = 'menu.html'})
     BackButton.show();
 </script>
-</body>>`
+</body>`
 }
 
 function redirect(url) {
@@ -493,34 +493,12 @@ async function getCurrentBattlesByTag() {
         headers: headers,
         body: body
       });
+
     let json = await response.json();
-    json = {
-        "items": [
-          {
-            "battle_id": 2,
-            "date_start": "2023-08-13T15:30:21.937Z",
-            "date_end": "2023-08-13T15:30:21.937Z",
-            "participant_1": {
-              "video_id": "8zJ94rVCoUU",
-              "likes_start": 300,
-              "user_id": 529515769,
-              "photo_url_160": "https://vpchallenge.tw1.su/img/1069351042.jpg",
-              "username_or_first_name": "passionde",
-              "url": "tg://user?id=1069351042"
-            },
-            "participant_2": {
-              "video_id": "8zJ94rVCoUU",
-              "likes_start": 300,
-              "user_id": 529515769,
-              "photo_url_160": "https://vpchallenge.tw1.su/img/1069351042.jpg",
-              "username_or_first_name": "passionde",
-              "url": "tg://user?id=1069351042"
-            }
-          }
-        ]
-      }
     let battles = document.querySelector(".battles");
+
     battles.remove();
+    
     drawBattles(json)
 }
 
