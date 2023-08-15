@@ -474,9 +474,8 @@ async function appointBattle() {
         notify("DifferentTags");
     }
 }
-
+let pageCounter = 1;
 async function getCurrentBattlesByTag() {
-    let counter = 1;
     const tag = document.querySelector(".tag-active").innerHTML.replace("#", "");
     const url = 'https://vpchallenge.tw1.su/api/battle/get-current-battles-by-tag';
     const headers = {
@@ -485,7 +484,7 @@ async function getCurrentBattlesByTag() {
         'Content-Type': 'application/json'
       };
     const body = JSON.stringify({
-        page: counter,
+        page: pageCounter,
         tag: tag
     });
     let response = await fetch(url, {
@@ -498,14 +497,14 @@ async function getCurrentBattlesByTag() {
     let battles = document.querySelector(".battles");
 
     battles.remove();
-    console.log(json)
+    console.log(json, tag)
     drawBattles(json)
 }
 
 function drawBattles(json) {
     let body = document.querySelector("body");
     let battles = document.createElement("div");
-
+    let loadMore = document.createElement('div');
     battles.setAttribute("class", "battles")
 
     for(let i = 0; i < json.items.length; i++) {
