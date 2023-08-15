@@ -10,16 +10,12 @@
     <script src="../js/video-pagination.js" defer></script>
     <script scr="text/javascript">
         var WebApp = window.Telegram.WebApp;
-        // var MainButton = WebApp.MainButton;
         var BackButton = WebApp.BackButton;
         var PopupParams = WebApp.PopupParams;
 
-        // MainButton.setText("На главную");
-        // MainButton.show();
+        BackButton.onClick(() => {window.location.href = 'menu.html'})
         BackButton.show();
-
-        BackButton.onClick(() => {window.location.href = "menu.html"})
-
+        
         PopupParams.title = "Профиль"
     </script>
 </head>
