@@ -9,12 +9,10 @@
     <script src="../js/script.js"></script>
     <script src="../js/video-pagination.js" defer></script>
     <script scr="text/javascript">
-        function redirect(url) {
-            window.location.href = url + ".html"
-        }
         var WebApp = window.Telegram.WebApp;
         var BackButton = WebApp.BackButton;
 
+        BackButton.onClick(() => {window.location.href = 'menu.html'})
         BackButton.show();
 
     </script>
