@@ -597,7 +597,7 @@ async function getTags() {
         }
         tag.setAttribute("id", json.tags_names[i])
         tag.innerHTML = "#" + json.tags_names[i]
-        tag.setAttribute("onclick", `MakeActive('${json.tags_names[i]}', getCurrentBattlesByTag())`)
+        tag.setAttribute("onclick", `MakeActive('${json.tags_names[i]}'); getCurrentBattlesByTag())`)
         tags.appendChild(tag);
     }
 }
