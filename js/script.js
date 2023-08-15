@@ -58,11 +58,11 @@ const pages = {
 </body>`,
     profile: `<body onload="getUserInfo(); getUserAllVideos()">
     <div class="about">
-        <div class="rating"  style="font-size:3.5vh;
+        <div class="rating"  style="font-size:1.7em;
                                     margin:auto;
                                     text-align: center;"></div>
         <img src="" class="avatar">
-        <div class="coins"   style="font-size:3.5vh;
+        <div class="coins"   style="font-size:1.7em;
                                     margin:auto;
                                     text-align: center;"></div>
     </div>
@@ -183,6 +183,8 @@ function redirect(url) {
             html.appendChild(newBody)
             break;
     }
+
+    html.setAttribute("class", "")
 
     newBody.appendChild(bodyContent)
     html.appendChild(newBody)
@@ -461,7 +463,9 @@ async function getCurrentBattlesByTag() {
 function drawBattles(json) {
     let body = document.querySelector("body");
     let battles = document.createElement("div");
+
     battles.setAttribute("class", "battles")
+
     for(let i = 0; i < 5; i++) {
         let battle = document.createElement("div");
 
@@ -859,3 +863,15 @@ async function InfiniteScrollGetTags() {
 
     // При слишком быстром скролле, активным может быть элемент не по середине, а более верхний. Встречается редко
 };
+
+function mark(video, videoId) {
+  let marked_videos = document.querySelectorAll('.marked');
+  if (marked_videos.length > 0) {
+    marked_videos[0].remove()
+  }
+  let mark = document.createElement("img");
+  mark.setAttribute("src", "../img/checkmark.png");
+  mark.setAttribute("class", "marked")
+  mark.setAttribute("id", videoId)
+  video.appendChild(mark);
+}

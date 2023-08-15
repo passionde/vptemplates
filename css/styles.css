@@ -98,6 +98,10 @@ html {
     background-image: linear-gradient(180deg, #13fefe, #50abeb);
 }
 
+html {
+    overflow: hidden;
+    height: 100vh;
+}
 body {
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
@@ -115,7 +119,7 @@ body {
     border-radius: 15px;
     width: 70vw;
     margin: 2vh auto 2vh auto;
-    height: 10vh;
+    height: 60px;
     text-align: center;
     font-weight: bold;
 }
@@ -186,7 +190,7 @@ body {
     padding: 0 1vw 0 1vw;
     border-radius: 30px;
     text-align: center;
-    height: 9vh;
+    height: 50px;
 
 }
 .challenge-text {
@@ -242,10 +246,10 @@ li {
     display: block;
     position: relative;
     z-index: 1;
-    width: 10vw;
-    height: 10vw;
-    top:-37vh;
-    left: 22vw;
+    width: 40px;
+    height: 40px;
+    top:-185px;
+    left: 90px;
 }
 
 .name {
