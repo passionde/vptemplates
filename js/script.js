@@ -505,6 +505,10 @@ function drawBattles(json) {
     let body = document.querySelector("body");
     let battles = document.createElement("div");
     let loadMore = document.createElement('div');
+
+    loadMore.innerHTML = "Загрузить ещё"
+
+    loadMore.setAttribute("style", "border:1px solid #DADADA; border-radius:20px");
     battles.setAttribute("class", "battles")
 
     for(let i = 0; i < json.items.length; i++) {
@@ -568,9 +572,10 @@ function drawBattles(json) {
         battle.appendChild(battleRight)
         battles.appendChild(battle);
     }
-    body.appendChild(battles)
+    body.appendChild(battles);
+    body.appendChild(loadMore)
     localStorage.setItem("battle", JSON.stringify(json));
-    localStorage.setItem("ActiveTag", document.querySelector(".tag-active").innerHTML)
+    localStorage.setItem("ActiveTag", document.querySelector(".tag-active").innerHTML);
     console.log(json);
 }
 
