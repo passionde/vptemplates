@@ -74,7 +74,7 @@ const pages = {
     <div class="videos">
     </div>
 
-    <div class="challenge" onclick="appointBattle()"><div class="challenge-text">Бросить вызов</div></div>
+    <div class="challenge" onclick="appointBattle(); redirect('menu')"><div class="challenge-text">Бросить вызов</div></div>
     <script type="text/javascript">
     var WebApp = window.Telegram.WebApp;
     var BackButton = WebApp.BackButton;
@@ -676,7 +676,7 @@ function notify(Type, video="") {
             break
         case "MissingARequiredAppTag":
             notificationHeader.innerHTML = "У видео отсутствует обязательный тег приложения";
-            notificationText.innerHTML = "Убедитесь, что у Вашего видео присутствует обязательный тег";
+            notificationText.innerHTML = "Убедитесь, что у Вашего видео присутствует обязательный тег #vpch";
             notificationButtonText.innerHTML = "Продолжить";
             notificationButton.setAttribute("onclick", "redirect('yt')");
             break
