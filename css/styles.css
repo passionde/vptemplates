@@ -223,7 +223,7 @@ body {
     padding-top: .2vh;
 }
 
-input {
+.youtube-input {
     height: 5vh;
     width: 70vw;
     font-size: 1.7vh;

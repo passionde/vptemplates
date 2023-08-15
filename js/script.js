@@ -46,7 +46,7 @@ const pages = {
     </div>
     
 </body>`,
-    myvideos:   `<body onload="setcategory(); getUserVideosByTag(getcategory())">
+    myvideos:   `<body>
     <div style="margin-top:7vh;font-size:4vh;">
         Выберите видео &nbsp;<div class="blue-gradiented-text"><i class="asd"></i></div>
     </div>
@@ -69,10 +69,15 @@ const pages = {
 
     <div class="name" align="center"></div>
 
-    <div class="add-clip" align="center" onclick="redirect('yt');">
-        <p class="add-clip-text">Добавить клип</p>
-    </div>
+    <div style="display:flex;flex-direction:row">
+        <div class="add-clip" align="center" onclick="redirect('yt');">
+            <p class="add-clip-text">Добавить видео</p>
+        </div>
 
+        <div class="challenge" style="margin:auto; height:37px; width:39vw" onclick="videoDeletion()">
+            <div class="challenge-text">Удалить видео</div>
+        </div>
+    </div>
     <div class="videos">        
     </div>
 </body>`,
@@ -92,7 +97,7 @@ const pages = {
 
         <div style="margin: 3vh 0 2.5vh 0;">Ссылка на ваше видео YouTube Shorts</div>
 
-        <input type="url" placeholder="https://www.youtube.com/shorts/SHORTSID"/>
+        <input type="url" placeholder="https://www.youtube.com/shorts/SHORTSID" class="youtube-input"/>
 
         <div class="buttons-horizontal">
             <div class="cancel" onclick="redirect('menu')">Отмена</div>
@@ -150,7 +155,7 @@ function redirect(url) {
             html.appendChild(newBody)
 
             setcategory();
-            getUserVideosByTag(getcategory());
+            getUserVideosByTag(localStorage.getItem("category"));
             break;
         case 'profile':
             bodyContent.innerHTML = pages.profile;
@@ -229,6 +234,12 @@ async function getUserVideosByTag(tag) {
         videos.append(profileIframe)
         video_row.appendChild(profileIframe);
     };
+    if (json.items.length == 0) {
+        const message = document.createElement("i");
+        message.innerHTML = "Здесь будут ваши видео..."
+
+        videos.appendChild(message)
+    }
 }
 
 async function getUserInfo() {
@@ -282,6 +293,7 @@ async function getUserAllVideos() {
         bin.setAttribute("onclick", `notify('deletevideo', this.id)`)
         video.setAttribute("src", json.items[i].thumbnails[3]);
         video.setAttribute("class", "profileIframe-img");
+        profileIframe.setAttribute("id", json.items[i].video_id)
         profileIframe.setAttribute("class", "profileIframe");
 
         if (i % 3 == 0) {
@@ -336,7 +348,7 @@ async function deleteVideo(videoId) {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          "video_id": videoId.id
+          "video_id": videoId
         })
       });
     let json = await response.json();
@@ -843,7 +855,7 @@ async function InfiniteScrollGetTags() {
         }
 
         // Добавление активности выбранной категории 
-        eles_active[0].setAttribute("onclick", "redirect(`myvideos`); sendcategory(this.innerHTML)")
+        eles_active[0].setAttribute("onclick", "sendcategory(this.innerHTML); redirect(`myvideos`)")
 
         // Обновление счётчика категорий
         counter++;
@@ -851,7 +863,7 @@ async function InfiniteScrollGetTags() {
 
     // Детект скролла
     listOfElements.addEventListener('scroll', function() {
-        if (listOfElements.scrollTop + listOfElements.clientHeight >= listOfElements.scrollHeight) {
+        if (listOfElements.scrollTop + listOfElements.clientHeight >= listOfElements.scrollHeight - 10) {
         loadmore();
         }
     });
@@ -874,4 +886,29 @@ function mark(video, videoId) {
   mark.setAttribute("class", "marked")
   mark.setAttribute("id", videoId)
   video.appendChild(mark);
+}
+let c = 0;
+function videoDeletion() {
+    const videos = document.querySelectorAll(".profileIframe");
+    const divs = document.querySelectorAll("div");
+    const videosInsertion = document.querySelector(".videos")
+    const marked = document.querySelector(".marked")
+
+    for(let i = 0; i < videos.length; i++) {
+        videos[i].setAttribute("onclick", "mark(this, this.id)");
+    }
+
+    insertion = "<div style='text-align:center' class='manual'><i>Отметьте видео (одно), подлежащее удалению, а затем снова нажмите удалить на кнопку удаления<i></div>"
+
+    videosInsertion.insertAdjacentHTML("beforebegin", insertion)
+
+    for(let i = 0; i < divs.length; i++) {
+        if(divs[i].classList == "manual") {
+            divs[i].remove()
+        }
+    }
+    console.log(marked);
+    if(marked.length != 0) {
+        deleteVideo(marked.id)
+    }
 }
