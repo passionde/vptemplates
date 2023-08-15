@@ -151,13 +151,13 @@ body {
 .categories {
     width: 30vh;
     margin: 15vh auto 0 auto;
-    font-size: 4vh;
+    font-size: 6vh;
     text-align: center;
     font-weight: 300;
     padding-left:0;
     overflow: auto;
     position: relative;
-    height: 50vh;
+    height: 60vh;
 }
 .categories::-webkit-scrollbar {
     display:none
