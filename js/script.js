@@ -154,7 +154,7 @@ function redirect(url) {
             html.appendChild(newBody)
 
             getUserInfo();
-            backButton();
+            
             break;
         case 'myvideos':
             bodyContent.innerHTML = pages.myvideos;
