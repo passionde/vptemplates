@@ -1,7 +1,7 @@
 function checkQueryString() {
-    if (window.location.href.indexOf("battle") >= 0) {
+    if (window.location.href.indexOf("battle=") >= 0) {
         getBattleById();
-    } else if (window.location.href.indexOf("invitation") >= 0) {
+    } else if (window.location.href.indexOf("invitation=") >= 0) {
         getInvitationById();
     }
 }
@@ -28,7 +28,7 @@ async function getBattleById() {
 async function getInvitationById() {
     let invitation_id = +window.location.href.split("invitation=")[1].split("#")[0];
     console.log(invitation_id)
-    if(invitation_id !== NaN) {
+    if(invitation_id != NaN) {
         let response = await fetch("https://vpchallenge.tw1.su/api/battle/get-invitation-info", {
             method: "POST",
             headers: {
@@ -39,7 +39,7 @@ async function getInvitationById() {
             body: JSON.stringify({invitation_id: invitation_id})
         })
         let json = await response.json();
-        // console.log(json, response)
+        console.log(json, response)
         if(response.ok) {
             battleThroughId(json)
         }

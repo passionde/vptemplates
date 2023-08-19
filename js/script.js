@@ -510,6 +510,12 @@ function drawBattles(json) {
 
     battles.setAttribute("class", "battles")
 
+    if (json.items.length == 0) {
+        let message = document.querySelector("div")
+        message.innerHTML = "В данный момент нет идущих баттлов"
+        body.appendChild(message)
+
+    }
     for(let i = 0; i < json.items.length; i++) {
         let battle = document.createElement("div");
 
@@ -562,12 +568,6 @@ function drawBattles(json) {
         battleRight.appendChild(battleRightAbout);
         battle.appendChild(battleRight)
         battles.appendChild(battle);
-    }
-    if (json.items.length == 0) {
-        let message = document.querySelector("div")
-        message.innerHTML = "В данный момент нет идущих баттлов"
-        body.appendChild(message)
-
     }
     body.appendChild(battles);
     localStorage.setItem("battle", JSON.stringify(json));
