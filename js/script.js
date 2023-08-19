@@ -2,10 +2,6 @@ window.Telegram.WebApp.expand();
 
 const pages = {
     battle: `<body onload="battle()">
-    <script type="text/javascript">
-    window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
-    window.Telegram.WebApp.BackButton.show(); 
-</script>
     <div>
         <div class="blue-gradiented-text" style="font-size:3vh;margin: 4vh 0 4vh 4vw;">
             <i class="asd"></i>
@@ -16,10 +12,6 @@ const pages = {
     </div>
 </body>`,
     challenge:  `<body onload="getTags()">
-    <script type="text/javascript">
-    window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
-    window.Telegram.WebApp.BackButton.show(); 
-</script>
     <ul class="categories">
         <li class="category-inactive">#random</li>
         <li class="category-inactive">#vocal</li>
@@ -29,10 +21,6 @@ const pages = {
     </ul>
 </body>`,
     menu:   `<body onload="getUserInfo()">
-    <script type="text/javascript">
-    window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
-    window.Telegram.WebApp.BackButton.show(); 
-</script>
     <div class="about">
         <img src="" class="avatar">
         <div class="wrapper">
@@ -60,10 +48,6 @@ const pages = {
     </div>
 </body>`,
     myvideos:   `<body>
-    <script type="text/javascript">
-    window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
-    window.Telegram.WebApp.BackButton.show(); 
-</script>
     <div style="margin-top:7vh;font-size:4vh;">
         Выберите видео &nbsp;<div class="blue-gradiented-text"><i class="asd"></i></div>
     </div>
@@ -74,10 +58,6 @@ const pages = {
     <div class="challenge" onclick="appointBattle(); notify('lookingForOpponent')"><div class="challenge-text">Бросить вызов</div></div>
 </body>`,
     profile: `<body onload="getUserInfo(); getUserAllVideos()">
-    <script type="text/javascript">
-    window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
-    window.Telegram.WebApp.BackButton.show(); 
-</script>
     <div class="about">
         <div class="rating"  style="font-size:1.7em;
                                     margin:auto;
@@ -103,17 +83,9 @@ const pages = {
     </div>
 </body>`,
     shop:   `<body>
-    <script type="text/javascript">
-    window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
-    window.Telegram.WebApp.BackButton.show(); 
-</script>
     <div style="margin: 40vh auto 0 auto; font-size: 3vh;" align="center"><i>Скоро здесь что-нибудь появится...</i></div>
 </body>`,
     vp: `<body onload="getCurrentBattlesByTag(); getTags()">
-    <script type="text/javascript">
-    window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
-    window.Telegram.WebApp.BackButton.show(); 
-</script>
     <div class="tags">
     </div>
 
@@ -121,10 +93,6 @@ const pages = {
     </div>
 </body>`,
     yt: `<body style="height:100vh">
-    <script type="text/javascript">
-    window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
-    window.Telegram.WebApp.BackButton.show(); 
-</script>
 
     <div class="yt-connect" align="center">
 
@@ -164,6 +132,7 @@ function redirect(url) {
             html.appendChild(newBody)
 
             battle();
+            backButton();
             break;
         case 'challenge':
             bodyContent.innerHTML = pages.challenge;
@@ -176,6 +145,7 @@ function redirect(url) {
             html.appendChild(newBody)
 
             InfiniteScrollGetTags();
+            backButton();
             break;
         case 'menu':
             bodyContent.innerHTML = pages.menu;
@@ -184,6 +154,7 @@ function redirect(url) {
             html.appendChild(newBody)
 
             getUserInfo();
+            backButton();
             break;
         case 'myvideos':
             bodyContent.innerHTML = pages.myvideos;
@@ -193,6 +164,7 @@ function redirect(url) {
 
             setcategory();
             getUserVideosByTag(localStorage.getItem("category"));
+            backButton();
             break;
         case 'profile':
             bodyContent.innerHTML = pages.profile;
@@ -203,12 +175,14 @@ function redirect(url) {
 
             getUserInfo();
             getUserAllVideos();
+            backButton();
             break;
         case 'shop':
             bodyContent.innerHTML = pages.shop;
 
             newBody.appendChild(bodyContent)
             html.appendChild(newBody)
+            backButton();
             break;
         case 'vp':
             bodyContent.innerHTML = pages.vp;
@@ -220,12 +194,14 @@ function redirect(url) {
 
             getTags();
             getCurrentBattlesByTag();
+            backButton();
             break;
         case 'yt':
             bodyContent.innerHTML = pages.yt;
 
             newBody.appendChild(bodyContent)
             html.appendChild(newBody)
+            backButton();
             break;
     }
 
@@ -977,4 +953,11 @@ function videoDeletion() {
 
 function handler() {
     return 0;
+}
+
+function backButton() {
+    if (localStorage.currentPage != "menu") {
+        window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
+        window.Telegram.WebApp.BackButton.show(); 
+    }
 }
