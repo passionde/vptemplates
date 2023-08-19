@@ -563,6 +563,10 @@ function drawBattles(json) {
         battle.appendChild(battleRight)
         battles.appendChild(battle);
     }
+    body.appendChild(battles);
+    localStorage.setItem("battle", JSON.stringify(json));
+    localStorage.setItem("ActiveTag", document.querySelector(".tag-active").innerHTML);
+    
     loadMore = document.createElement('div');
     if (true) {
         loadMore.innerHTML = "Загрузить ещё"
@@ -573,9 +577,6 @@ function drawBattles(json) {
 
         body.appendChild(loadMore)
     }
-    body.appendChild(battles);
-    localStorage.setItem("battle", JSON.stringify(json));
-    localStorage.setItem("ActiveTag", document.querySelector(".tag-active").innerHTML);
     // console.log(json);
 }
 

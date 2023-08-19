@@ -8,17 +8,8 @@
         <script src="https://telegram.org/js/telegram-web-app.js"></script>
         <script src="../js/script.js"></script>
         <script src="../js/battle.js"></script>
-        <script scr="text/javascript">
-            var WebApp = window.Telegram.WebApp;
-            var BackButton = WebApp.BackButton;
-            var PopupParams = WebApp.PopupParams;
-
-            BackButton.onClick(() => {window.location.href = 'menu.html'})
-            BackButton.show();
-            
-        </script>
     </head>
-<body>
+<body onload="getBattleById(); getInvitationById()">
     <div>
         <div class="blue-gradiented-text" style="font-size:3vh;margin: 4vh 0 4vh 4vw;">
             <i class="asd"></i>
