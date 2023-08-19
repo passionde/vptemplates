@@ -471,6 +471,8 @@ async function getCurrentBattlesByTag() {
     }
     if (tag == localStorage.lastActivePage) {
         pageCounter++;
+    } else if (localStorage.currentPage != "vp") {
+        pageCounter = 0;
     } else {
         pageCounter = 0;
         localStorage.lastActivePage = tag;
