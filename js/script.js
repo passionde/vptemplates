@@ -3,10 +3,8 @@ window.Telegram.WebApp.expand();
 const pages = {
     battle: `<body onload="battle()">
     <script type="text/javascript">
-    if (localStorage.currentPage != "menu") {
-        window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
-        window.Telegram.WebApp.BackButton.show();
-    }
+    window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
+    window.Telegram.WebApp.BackButton.show(); 
 </script>
     <div>
         <div class="blue-gradiented-text" style="font-size:3vh;margin: 4vh 0 4vh 4vw;">
@@ -19,10 +17,8 @@ const pages = {
 </body>`,
     challenge:  `<body onload="getTags()">
     <script type="text/javascript">
-    if (localStorage.currentPage != "menu") {
-        window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
-        window.Telegram.WebApp.BackButton.show();
-    }
+    window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
+    window.Telegram.WebApp.BackButton.show(); 
 </script>
     <ul class="categories">
         <li class="category-inactive">#random</li>
@@ -34,10 +30,8 @@ const pages = {
 </body>`,
     menu:   `<body onload="getUserInfo()">
     <script type="text/javascript">
-    if (localStorage.currentPage != "menu") {
-        window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
-        window.Telegram.WebApp.BackButton.show();
-    }
+    window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
+    window.Telegram.WebApp.BackButton.show(); 
 </script>
     <div class="about">
         <img src="" class="avatar">
@@ -67,10 +61,8 @@ const pages = {
 </body>`,
     myvideos:   `<body>
     <script type="text/javascript">
-    if (localStorage.currentPage != "menu") {
-        window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
-        window.Telegram.WebApp.BackButton.show();
-    }
+    window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
+    window.Telegram.WebApp.BackButton.show(); 
 </script>
     <div style="margin-top:7vh;font-size:4vh;">
         Выберите видео &nbsp;<div class="blue-gradiented-text"><i class="asd"></i></div>
@@ -83,10 +75,8 @@ const pages = {
 </body>`,
     profile: `<body onload="getUserInfo(); getUserAllVideos()">
     <script type="text/javascript">
-    if (localStorage.currentPage != "menu") {
-        window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
-        window.Telegram.WebApp.BackButton.show();
-    }
+    window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
+    window.Telegram.WebApp.BackButton.show(); 
 </script>
     <div class="about">
         <div class="rating"  style="font-size:1.7em;
@@ -114,19 +104,15 @@ const pages = {
 </body>`,
     shop:   `<body>
     <script type="text/javascript">
-    if (localStorage.currentPage != "menu") {
-        window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
-        window.Telegram.WebApp.BackButton.show();
-    }
+    window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
+    window.Telegram.WebApp.BackButton.show(); 
 </script>
     <div style="margin: 40vh auto 0 auto; font-size: 3vh;" align="center"><i>Скоро здесь что-нибудь появится...</i></div>
 </body>`,
     vp: `<body onload="getCurrentBattlesByTag(); getTags()">
     <script type="text/javascript">
-    if (localStorage.currentPage != "menu") {
-        window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
-        window.Telegram.WebApp.BackButton.show();
-    }
+    window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
+    window.Telegram.WebApp.BackButton.show(); 
 </script>
     <div class="tags">
     </div>
@@ -136,10 +122,8 @@ const pages = {
 </body>`,
     yt: `<body style="height:100vh">
     <script type="text/javascript">
-    if (localStorage.currentPage != "menu") {
-        window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
-        window.Telegram.WebApp.BackButton.show();
-    }
+    window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
+    window.Telegram.WebApp.BackButton.show(); 
 </script>
 
     <div class="yt-connect" align="center">
@@ -989,4 +973,8 @@ function videoDeletion() {
     if(marked.length != 0) {
         deleteVideo(marked.id)
     }
+}
+
+function handler() {
+    return 0;
 }
