@@ -148,13 +148,13 @@ function redirect(url) {
             backButton();
             break;
         case 'menu':
+            hideBackButton();
             bodyContent.innerHTML = pages.menu;
 
             newBody.appendChild(bodyContent)
             html.appendChild(newBody)
 
             getUserInfo();
-            hideBackButton();
             break;
         case 'myvideos':
             bodyContent.innerHTML = pages.myvideos;
