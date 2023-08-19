@@ -272,10 +272,10 @@ async function getUserInfo() {
     } else {
         name.innerHTML = json.username_or_first_name
     }
-    if (currentPage == "menu") {
+    if (localStorage.currentPage == "menu") {
         coins.innerHTML = json.vp_coins + " VPCoins";
         rating.innerHTML = "Рейтинг: " + json.rating;
-    } else if (currentPage == "profile") {
+    } else if (localStorage.currentPage == "profile") {
         coins.innerHTML = json.vp_coins + "<br>VPCoins";
         rating.innerHTML = json.rating + "<br>Рейтинг";
         coins.setAttribute("style", "font-size:1.2em;text-align:center;padding-top:2em;padding-left:1em;")
