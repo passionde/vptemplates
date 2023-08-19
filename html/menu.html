@@ -13,12 +13,10 @@
 
         WebApp.expand();
     
-        if (window.location.href.split("/")[5] != "menu.html") {
-            BackButton.onClick(() => {window.location.href = 'menu.html'})
-        } else {
-            BackButton.onClick(() => {WebApp.close()})
+        if (localStorage.currentPage != "menu") {
+            BackButton.onClick(() => {redirect('menu')})
+            BackButton.show();
         }
-        BackButton.show();
     </script>
 </head>
 <body onload="getUserInfo()">

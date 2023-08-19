@@ -107,7 +107,7 @@ const pages = {
 </body>`
 }
 
-let currentPage = "menu";
+localStorage.currentPage = "menu"
 
 function redirect(url) {
     let html = document.querySelector('html');
@@ -120,7 +120,7 @@ function redirect(url) {
 
     body.remove()
 
-    currentPage = url;
+    localStorage.currentPage = url;
 
     switch(url) {
         case 'battle':
@@ -238,7 +238,7 @@ async function getUserVideosByTag(tag) {
     };
     if (json.items.length == 0) {
         const message = document.createElement("i");
-        message.innerHTML = "Здесь будут ваши видео..."
+        message.innerHTML = "Здесь будут Ваши видео..."
 
         videos.appendChild(message)
     }
@@ -328,7 +328,7 @@ async function getUserAllVideos() {
     };
     if (json.items.length == 0) {
         const message = document.createElement("i");
-        message.innerHTML = "Здесь будут ваши видео..."
+        message.innerHTML = "Здесь будут Ваши видео..."
 
         videos.appendChild(message)
     }
@@ -544,7 +544,7 @@ function drawBattles(json) {
     body.appendChild(battles);
 
     let loadMore = document.createElement('div');
-    if (json.items.length != 0 ) {
+    if (true) {
         loadMore.innerHTML = "Загрузить ещё"
 
         loadMore.setAttribute("style", "border:1px solid #DADADA; border-radius:20px; width: 34vw; margin: 0 auto 0 auto;text-align:center;");
