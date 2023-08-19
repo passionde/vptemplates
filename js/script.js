@@ -59,14 +59,14 @@ const pages = {
     <div class="about">
         <div class="rating"  style="font-size:1.7em;
                                     margin:auto;
-                                    text-align: center;"></div>
+                                    text-align: center;color:white;">undefined<br>Рейтинг</div>
         <img src="" class="avatar">
         <div class="coins"   style="font-size:1.7em;
                                     margin:auto;
-                                    text-align: center;"></div>
+                                    text-align: center;color:white;">undefined<br>VPCoins</div>
     </div>
 
-    <div class="name" align="center"></div>
+    <div class="name" align="center" style="color:white;">undefined</div>
 
     <div style="display:flex;flex-direction:row">
         <div class="add-clip" align="center" onclick="redirect('yt');">
@@ -937,4 +937,14 @@ function videoDeletion() {
     if(marked.length != 0) {
         deleteVideo(marked.id)
     }
+}
+
+var WebApp = window.Telegram.WebApp;
+var BackButton = WebApp.BackButton;
+
+WebApp.expand();
+
+if (localStorage.currentPage != "menu") {
+    BackButton.onClick(() => {window.location.href = 'menu.html'})
+    BackButton.show();
 }
