@@ -20,7 +20,8 @@ const pages = {
         <li class="category-inactive">#beatbox</li>
     </ul>
 </body>`,
-    menu:   `<body onload="getUserInfo()">
+    menu:   `<body>
+    <script>window.onload = hideBackButton</script>
     <div class="about">
         <img src="" class="avatar">
         <div class="wrapper">
@@ -148,7 +149,6 @@ function redirect(url) {
             backButton();
             break;
         case 'menu':
-            hideBackButton();
             bodyContent.innerHTML = pages.menu;
 
             newBody.appendChild(bodyContent)
