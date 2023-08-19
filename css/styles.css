@@ -202,10 +202,9 @@ body {
 }
 
 .coins {
-    margin: 3vh 0 3vh 0;
-    font-size: 6vh;
     text-align: center;
 	color: transparent;    
+    font-size:2em;
 	-webkit-background-clip: text;
 	background-clip: text;
 	background-image: linear-gradient(180deg, #FF4DE2, #8601A7);
@@ -355,6 +354,11 @@ li {
     width: 33vw;
     overflow: hidden;
     margin:0;
+    margin: 2px;
+    background-image: linear-gradient(180deg, #13fefe, #50abeb);
+    background-origin: border-box;
+    box-shadow: inset 0 1000px white;
+    border: 1px solid transparent;
 }
 
 .profileIframe-img {

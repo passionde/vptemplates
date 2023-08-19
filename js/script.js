@@ -107,6 +107,8 @@ const pages = {
 </body>`
 }
 
+let currentPage = "menu";
+
 function redirect(url) {
     let html = document.querySelector('html');
     let body = document.querySelector('body');
@@ -117,6 +119,8 @@ function redirect(url) {
     let bodyContent = document.createElement('div');
 
     body.remove()
+
+    currentPage = url;
 
     switch(url) {
         case 'battle':
@@ -161,6 +165,7 @@ function redirect(url) {
 
             newBody.appendChild(bodyContent)
             html.appendChild(newBody)
+
 
             getUserInfo();
             getUserAllVideos();
@@ -258,9 +263,24 @@ async function getUserInfo() {
 
     avatar.setAttribute("src", json.photo_url_160)
 
-    name.innerHTML = json.username_or_first_name;
-    coins.innerHTML = json.vp_coins + " VPCoins";
-    rating.innerHTML = "Рейтинг: " + json.rating;
+    if (json.username_or_first_name) {
+        if (json.username_or_first_name.length > 14) {
+            name.innerHTML = json.username_or_first_name.splice(0, 14) + "...";
+        } else {
+            name.innerHTML = json.username_or_first_name
+        };
+    } else {
+        name.innerHTML = json.username_or_first_name
+    }
+    if (currentPage == "menu") {
+        coins.innerHTML = json.vp_coins + " VPCoins";
+        rating.innerHTML = "Рейтинг: " + json.rating;
+    } else if (currentPage == "profile") {
+        coins.innerHTML = json.vp_coins + "<br>VPCoins";
+        rating.innerHTML = json.rating + "<br>Рейтинг";
+        coins.setAttribute("style", "font-size:1.2em;text-align:center;padding-top:2em;padding-left:1em;")
+        rating.setAttribute("style", "font-size:1.2em;text-align:center;padding-top:2em;padding-right:1em;")
+    };
 
 };
 
@@ -303,7 +323,15 @@ async function getUserAllVideos() {
         profileIframe.appendChild(video);
         videos.append(profileIframe)
         video_row.appendChild(profileIframe);
+
+        
     };
+    if (json.items.length == 0) {
+        const message = document.createElement("i");
+        message.innerHTML = "Здесь будут ваши видео..."
+
+        videos.appendChild(message)
+    }
 };
 async function addNewVideo(url) {
     let response = await fetch('https://vpchallenge.tw1.su/api/video/add-new-video', {
@@ -790,7 +818,7 @@ async function InfiniteScrollGetTags() {
     // Чтение нужного родителя
     let listOfElements = document.querySelector(".categories");
 
-    let response= await fetch("https://vpchallenge.tw1.su/api/tags/get-tags", {
+    let response = await fetch("https://vpchallenge.tw1.su/api/tags/get-tags", {
         method: 'POST',
         headers: {
         'Accept': 'application/json',
@@ -804,6 +832,7 @@ async function InfiniteScrollGetTags() {
     for(let i = 0; i < json.tags_names.length; i++) {
         tags.push("#" + json.tags_names[i])
     }
+    let categoriesForLoad = tags;
     let categories = tags;
 
     // Счётчик загруженных категорий
