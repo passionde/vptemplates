@@ -463,10 +463,11 @@ function pageCounterPlusPlus() {
     pageCounter++;
 }
 async function getCurrentBattlesByTag() {
+    let tag;
     if(document.querySelector(".tag-active") == null) {
-        const tag = "random"
+        tag = "random"
     } else {
-        const tag = document.querySelector(".tag-active").innerHTML.replace("#", "");
+        tag = document.querySelector(".tag-active").innerHTML.replace("#", "");
     }
     const url = 'https://vpchallenge.tw1.su/api/battle/get-current-battles-by-tag';
     const headers = {
@@ -971,4 +972,5 @@ function backButton() {
 
 function hideBackButton() {
     window.Telegram.WebApp.BackButton.hide();
+    window.Telegram.WebApp.BackButton.isVisible = false;
 }
