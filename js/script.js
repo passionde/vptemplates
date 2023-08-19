@@ -421,7 +421,7 @@ async function appointBattle() {
     
     const data = await responseOpponent.json();
     const opponentVideoId = data.video_id;
-    console.log(data, opponentVideoId);
+    // console.log(data, opponentVideoId);
 
     const battleAppoinment = {
         url:'https://vpchallenge.tw1.su/api/battle/appoint-battle',
@@ -443,7 +443,7 @@ async function appointBattle() {
     });
 
     const dataBattle = await responseBattle.json();
-    console.log(dataBattle);
+    // console.log(dataBattle);
 
     if (responseBattle.ok) {
         notify("opponentfound");
@@ -460,6 +460,8 @@ async function appointBattle() {
     }
 }
 let pageCounter = 0;
+localStorage.activePage = ""
+
 function pageCounterPlusPlus() {
     pageCounter++;
 }
@@ -470,6 +472,12 @@ async function getCurrentBattlesByTag() {
     } else {
         tag = document.querySelector(".tag-active").innerHTML.replace("#", "");
     }
+    if (tag == localStorage.activePage) {
+        pageCounter++;
+    } else {
+        pageCounter = 0;
+    }
+
     const url = 'https://vpchallenge.tw1.su/api/battle/get-current-battles-by-tag';
     const headers = {
         'accept': 'application/json',
@@ -485,7 +493,7 @@ async function getCurrentBattlesByTag() {
         headers: headers,
         body: body
       });
-
+    console.log(pageCounter);
     let json = await response.json();
     let battles = document.querySelector(".battles");
     const loadMore = document.querySelector('.loadMore');
@@ -495,7 +503,7 @@ async function getCurrentBattlesByTag() {
     }
 
     battles.remove();
-    console.log(json, tag)
+    // console.log(json, tag)
     drawBattles(json)
 }
 
@@ -572,7 +580,7 @@ function drawBattles(json) {
     }
     localStorage.setItem("battle", JSON.stringify(json));
     localStorage.setItem("ActiveTag", document.querySelector(".tag-active").innerHTML);
-    console.log(json);
+    // console.log(json);
 }
 
 async function getTags() {
@@ -808,7 +816,7 @@ function battle() {
 
     tag.innerHTML = localStorage.getItem("ActiveTag");
 
-    console.log(json);
+    // console.log(json);
 
     cardLeft.setAttribute('class', 'card');
     cardRight.setAttribute('class', 'card')
@@ -972,5 +980,5 @@ function backButton() {
         window.Telegram.WebApp.BackButton.hide();
         window.Telegram.WebApp.BackButton.isVisible = false;
     }
-    console.log("backButton function worked")
+    // console.log("backButton function worked")
 }
