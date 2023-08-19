@@ -460,11 +460,8 @@ async function appointBattle() {
     }
 }
 let pageCounter = 0;
-localStorage.activePage = ""
+localStorage.lastActivePage = ""
 
-function pageCounterPlusPlus() {
-    pageCounter++;
-}
 async function getCurrentBattlesByTag() {
     let tag;
     if(document.querySelector(".tag-active") == null) {
@@ -472,10 +469,11 @@ async function getCurrentBattlesByTag() {
     } else {
         tag = document.querySelector(".tag-active").innerHTML.replace("#", "");
     }
-    if (tag == localStorage.activePage) {
+    if (tag == localStorage.lastActivePage) {
         pageCounter++;
     } else {
         pageCounter = 0;
+        localStorage.lastActivePage = tag;
     }
 
     const url = 'https://vpchallenge.tw1.su/api/battle/get-current-battles-by-tag';
@@ -496,15 +494,24 @@ async function getCurrentBattlesByTag() {
     console.log(pageCounter);
     let json = await response.json();
     let battles = document.querySelector(".battles");
-    const loadMore = document.querySelector('.loadMore');
+    let loadMore = document.querySelector('.loadMore');
     
     if(loadMore != null) {
         loadMore.remove();
     }
-    localStorage.activePage = tag;
     battles.remove();
     // console.log(json, tag)
     drawBattles(json)
+    loadMore = document.createElement('div');
+    if (true) {
+        loadMore.innerHTML = "Загрузить ещё"
+
+        loadMore.setAttribute("style", "border:1px solid #DADADA; border-radius:20px; width: 34vw; margin: 0 auto 0 auto;text-align:center;");
+        loadMore.setAttribute("class", "loadMore");
+        loadMore.setAttribute("onclick", `getCurrentBattlesByTag()`)
+
+        body.appendChild(loadMore)
+    }
 }
 
 function drawBattles(json) {
@@ -567,17 +574,6 @@ function drawBattles(json) {
         battles.appendChild(battle);
     }
     body.appendChild(battles);
-
-    let loadMore = document.createElement('div');
-    if (true) {
-        loadMore.innerHTML = "Загрузить ещё"
-
-        loadMore.setAttribute("style", "border:1px solid #DADADA; border-radius:20px; width: 34vw; margin: 0 auto 0 auto;text-align:center;");
-        loadMore.setAttribute("class", "loadMore");
-        loadMore.setAttribute("onclick", `pageCounterPlusPlus(); getCurrentBattlesByTag()`)
-
-        body.appendChild(loadMore)
-    }
     localStorage.setItem("battle", JSON.stringify(json));
     localStorage.setItem("ActiveTag", document.querySelector(".tag-active").innerHTML);
     // console.log(json);
