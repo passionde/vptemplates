@@ -566,9 +566,9 @@ function drawBattles(json) {
     body.appendChild(battles);
     localStorage.setItem("battle", JSON.stringify(json));
     localStorage.setItem("ActiveTag", document.querySelector(".tag-active").innerHTML);
-    
+
     loadMore = document.createElement('div');
-    if (true) {
+    if (json.items.length == 10) {
         loadMore.innerHTML = "Загрузить ещё"
 
         loadMore.setAttribute("style", "border:1px solid #DADADA; border-radius:20px; width: 34vw; margin: 0 auto 0 auto;text-align:center;");
