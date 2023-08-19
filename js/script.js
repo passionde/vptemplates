@@ -966,7 +966,7 @@ function handler() {
 
 function backButton() {
     if (localStorage.currentPage != "menu") {
-        window.Telegram.WebApp.BackButton.onClick(redirect("menu"))
+        window.Telegram.WebApp.BackButton.onClick(() => {redirect("menu");})
         window.Telegram.WebApp.BackButton.show(); 
     } else {
         window.Telegram.WebApp.BackButton.hide();
