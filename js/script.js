@@ -154,6 +154,7 @@ function redirect(url) {
             newBody.appendChild(bodyContent)
             html.appendChild(newBody)
 
+            backButton();
             getUserInfo();
             break;
         case 'myvideos':
