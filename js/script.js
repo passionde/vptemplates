@@ -973,8 +973,3 @@ function backButton() {
     }
     console.log("backButton function worked")
 }
-
-function hideBackButton() {
-    window.Telegram.WebApp.BackButton.hide();
-    window.Telegram.WebApp.BackButton.isVisible = false;
-}
