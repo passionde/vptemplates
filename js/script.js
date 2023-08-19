@@ -84,7 +84,7 @@ const pages = {
     </div>
 </body>`,
     shop:   `<body>
-    <div style="margin: 40vh auto 0 auto; font-size: 3vh;" align="center"><i>Скоро здесь что-нибудь появится...</i></div>
+    <div style="margin: 40vh auto 0 auto; font-size: 3vh;" align="center"><i>Скоро здесь появится информация...</i></div>
 </body>`,
     vp: `<body onload="getCurrentBattlesByTag(); getTags()">
     <div class="tags">
@@ -491,7 +491,7 @@ async function getCurrentBattlesByTag() {
         headers: headers,
         body: body
       });
-    console.log(pageCounter);
+    // console.log(pageCounter);
     let json = await response.json();
     let battles = document.querySelector(".battles");
     let loadMore = document.querySelector('.loadMore');
@@ -562,6 +562,12 @@ function drawBattles(json) {
         battleRight.appendChild(battleRightAbout);
         battle.appendChild(battleRight)
         battles.appendChild(battle);
+    }
+    if (json.items.length == 0) {
+        let message = document.querySelector("div")
+        message.innerHTML = "В данный момент нет идущих баттлов"
+        body.appendChild(message)
+
     }
     body.appendChild(battles);
     localStorage.setItem("battle", JSON.stringify(json));
@@ -791,10 +797,8 @@ function battle() {
 
     let nameLeft = document.createElement("div")
     let avatarLeft = document.createElement("img")
-    let scoreLeft = document.createElement("div")
     let nameRight = document.createElement("div")
     let avatarRight = document.createElement("img")
-    let scoreRight = document.createElement("div")
 
     let json = JSON.parse(localStorage.battle);
     let userVideoId = json.items[0].participant_1.video_id;
@@ -804,12 +808,10 @@ function battle() {
     avatarLeft.setAttribute("src", json.items[0].participant_1.photo_url_160);
     avatarLeft.setAttribute('class', 'battle-avatar')
     avatarLeft.setAttribute('style', 'margin:1vh auto 1vh auto')
-    scoreLeft.innerHTML = json.items[0].participant_1.likes_start;
     nameRight.innerHTML = json.items[0].participant_2.username_or_first_name;
     avatarRight.setAttribute("src", json.items[0].participant_2.photo_url_160);
     avatarRight.setAttribute("class", "battle-avatar")
     avatarRight.setAttribute('style', 'margin:1vh auto 1vh auto')
-    scoreRight.innerHTML = json.items[0].participant_2.likes_start;
 
     tag.innerHTML = localStorage.getItem("ActiveTag");
 
@@ -828,11 +830,9 @@ function battle() {
     cardLeft.appendChild(iframeLeft);
     cardLeft.appendChild(avatarLeft);
     cardLeft.appendChild(nameLeft);
-    cardLeft.appendChild(scoreLeft);
     cardRight.appendChild(iframeRight);
     cardRight.appendChild(avatarRight);
     cardRight.appendChild(nameRight);
-    cardRight.appendChild(scoreRight);
     cardGrid.appendChild(cardLeft);
     cardGrid.appendChild(cardRight);
 }
