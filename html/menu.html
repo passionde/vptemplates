@@ -9,7 +9,13 @@
     <script src="../js/script.js" defer></script>
 </head>
 <body onload="getUserInfo()">
-    <script>window.onload = hideBackButton</script>
+    <script>
+    function hideBackButton() {
+        window.Telegram.WebApp.BackButton.hide();
+        window.Telegram.WebApp.BackButton.isVisible = false;
+    }
+        window.onload = hideBackButton
+    </script>
     <div class="about">
         <img src="" class="avatar">
         <div class="wrapper">
