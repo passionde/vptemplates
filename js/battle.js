@@ -7,7 +7,7 @@ function checkQueryString() {
 }
 
 async function getBattleById() {
-    let battle_id = +window.location.href.split("battle=")[1];
+    let battle_id = +window.location.href.split("battle=")[1].split("#");
     if (battle_id != NaN) {
         let response = await fetch("https://vpchallenge.tw1.su/api/battle/get-battle-info", {
             method: "POST",
@@ -26,7 +26,7 @@ async function getBattleById() {
     }
 }
 async function getInvitationById() {
-    let invitation_id = +window.location.href.split("invitation=")[1];
+    let invitation_id = +window.location.href.split("invitation=")[1].split("#");
     console.log(invitation_id)
     if(invitation_id !== NaN) {
         let response = await fetch("https://vpchallenge.tw1.su/api/battle/get-invitation-info", {
