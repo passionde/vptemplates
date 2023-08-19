@@ -463,8 +463,11 @@ function pageCounterPlusPlus() {
     pageCounter++;
 }
 async function getCurrentBattlesByTag() {
-
-    const tag = document.querySelector(".tag-active").innerHTML.replace("#", "");
+    if(document.querySelector(".tag-active") == null) {
+        const tag = "random"
+    } else {
+        const tag = document.querySelector(".tag-active").innerHTML.replace("#", "");
+    }
     const url = 'https://vpchallenge.tw1.su/api/battle/get-current-battles-by-tag';
     const headers = {
         'accept': 'application/json',
@@ -608,6 +611,9 @@ function MakeActive(Tag) {
 };
 
 function notify(Type, video="") {
+    if(document.querySelector(".notification")) {
+        document.querySelector(".notification").remove();
+    }
     var html = document.querySelector("html");
     html.classList.add("overlay");
 
@@ -619,6 +625,7 @@ function notify(Type, video="") {
     const notificationButtonText = document.createElement("div");
     const notificationCancelButton = document.createElement("div");
     const notificationCancelButtonText = document.createElement("div");
+    const notificationLoader = document.createElement("span");
 
     switch(Type) {
         case "clipaddition":
@@ -720,8 +727,8 @@ function notify(Type, video="") {
             break;
         case "lookingForOpponent":
             notificationHeader.innerHTML = "Ведётся поиск противника";
-            notificationText.innerHTML = "";
-            notificationText.setAttribute("class", "loader")
+            notificationLoader.setAttribute("class", "loader")
+            break;
     };
 
     notification.setAttribute("class", "notification");
@@ -745,8 +752,8 @@ function notify(Type, video="") {
         body.appendChild(notification);
         notification.appendChild(notificationHeader);
         notification.appendChild(notificationText);
-        notification.appendChild(notificationButton);
         notification.appendChild(notificationCancelButton); 
+        notification.appendChild(notificationLoader)
     }
 };
 
@@ -925,7 +932,7 @@ function mark(video, videoId) {
   mark.setAttribute("id", videoId)
   video.appendChild(mark);
 }
-let c = 0;
+
 function videoDeletion() {
     const videos = document.querySelectorAll(".profileIframe");
     const divs = document.querySelectorAll("div");
@@ -945,7 +952,7 @@ function videoDeletion() {
             divs[i].remove()
         }
     }
-    console.log(marked);
+
     if(marked.length != 0) {
         deleteVideo(marked.id)
     }
