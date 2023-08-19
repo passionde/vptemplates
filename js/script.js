@@ -502,16 +502,6 @@ async function getCurrentBattlesByTag() {
     battles.remove();
     // console.log(json, tag)
     drawBattles(json)
-    loadMore = document.createElement('div');
-    if (true) {
-        loadMore.innerHTML = "Загрузить ещё"
-
-        loadMore.setAttribute("style", "border:1px solid #DADADA; border-radius:20px; width: 34vw; margin: 0 auto 0 auto;text-align:center;");
-        loadMore.setAttribute("class", "loadMore");
-        loadMore.setAttribute("onclick", `getCurrentBattlesByTag()`)
-
-        body.appendChild(loadMore)
-    }
 }
 
 function drawBattles(json) {
@@ -572,6 +562,16 @@ function drawBattles(json) {
         battleRight.appendChild(battleRightAbout);
         battle.appendChild(battleRight)
         battles.appendChild(battle);
+    }
+    loadMore = document.createElement('div');
+    if (true) {
+        loadMore.innerHTML = "Загрузить ещё"
+
+        loadMore.setAttribute("style", "border:1px solid #DADADA; border-radius:20px; width: 34vw; margin: 0 auto 0 auto;text-align:center;");
+        loadMore.setAttribute("class", "loadMore");
+        loadMore.setAttribute("onclick", `getCurrentBattlesByTag()`)
+
+        body.appendChild(loadMore)
     }
     body.appendChild(battles);
     localStorage.setItem("battle", JSON.stringify(json));
