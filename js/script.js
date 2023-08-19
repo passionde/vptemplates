@@ -154,7 +154,7 @@ function redirect(url) {
             html.appendChild(newBody)
 
             getUserInfo();
-            
+            hideBackButton();
             break;
         case 'myvideos':
             bodyContent.innerHTML = pages.myvideos;
@@ -960,4 +960,8 @@ function backButton() {
         window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
         window.Telegram.WebApp.BackButton.show(); 
     }
+}
+
+function hideBackButton() {
+    window.Telegram.WebApp.BackButton.hide();
 }
