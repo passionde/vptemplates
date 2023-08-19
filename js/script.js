@@ -102,7 +102,7 @@ const pages = {
         <input type="url" placeholder="https://www.youtube.com/shorts/SHORTSID" class="youtube-input"/>
 
         <div class="buttons-horizontal">
-            <div class="cancel" onclick="redirect('menu'); hideBackButton()">Отмена</div>
+            <div class="cancel" onclick="redirect('menu')">Отмена</div>
             <div class="submit" onclick="addNewVideo(getUrl())"><div class="submit-text">ОК</div></div>
         </div>
 
@@ -542,7 +542,7 @@ function drawBattles(json) {
         battleRightName.innerHTML = json.items[0].participant_2.username_or_first_name;
         battleRightAvatar.setAttribute("src", json.items[0].participant_2.photo_url_160)
 
-        battle.setAttribute("onclick", "redirect('battle'); hideBackButton()")
+        battle.setAttribute("onclick", "redirect('battle')")
 
         battleLeftAbout.appendChild(battleLeftAvatar);
         battleLeftAbout.appendChild(battleLeftName);
