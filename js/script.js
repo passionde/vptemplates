@@ -501,7 +501,7 @@ async function getCurrentBattlesByTag() {
     if(loadMore != null) {
         loadMore.remove();
     }
-
+    localStorage.activePage = tag;
     battles.remove();
     // console.log(json, tag)
     drawBattles(json)
