@@ -1,5 +1,13 @@
+window.Telegram.WebApp.expand();
+
 const pages = {
     battle: `<body onload="battle()">
+    <script type="text/javascript">
+    if (localStorage.currentPage != "menu") {
+        window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
+        window.Telegram.WebApp.BackButton.show();
+    }
+</script>
     <div>
         <div class="blue-gradiented-text" style="font-size:3vh;margin: 4vh 0 4vh 4vw;">
             <i class="asd"></i>
@@ -10,6 +18,12 @@ const pages = {
     </div>
 </body>`,
     challenge:  `<body onload="getTags()">
+    <script type="text/javascript">
+    if (localStorage.currentPage != "menu") {
+        window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
+        window.Telegram.WebApp.BackButton.show();
+    }
+</script>
     <ul class="categories">
         <li class="category-inactive">#random</li>
         <li class="category-inactive">#vocal</li>
@@ -19,6 +33,12 @@ const pages = {
     </ul>
 </body>`,
     menu:   `<body onload="getUserInfo()">
+    <script type="text/javascript">
+    if (localStorage.currentPage != "menu") {
+        window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
+        window.Telegram.WebApp.BackButton.show();
+    }
+</script>
     <div class="about">
         <img src="" class="avatar">
         <div class="wrapper">
@@ -29,7 +49,7 @@ const pages = {
 
     <div class="coins"><div style="color:white">undefined</div></div>
 
-    <div class="button" onclick="redirect('vp')">
+    <div class="button" onclick="redirect('vp'); getCurrentBattlesByTag()">
         <div class="challenge-text">VP</div>
     </div>
 
@@ -46,6 +66,12 @@ const pages = {
     </div>
 </body>`,
     myvideos:   `<body>
+    <script type="text/javascript">
+    if (localStorage.currentPage != "menu") {
+        window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
+        window.Telegram.WebApp.BackButton.show();
+    }
+</script>
     <div style="margin-top:7vh;font-size:4vh;">
         Выберите видео &nbsp;<div class="blue-gradiented-text"><i class="asd"></i></div>
     </div>
@@ -56,6 +82,12 @@ const pages = {
     <div class="challenge" onclick="appointBattle(); notify('lookingForOpponent')"><div class="challenge-text">Бросить вызов</div></div>
 </body>`,
     profile: `<body onload="getUserInfo(); getUserAllVideos()">
+    <script type="text/javascript">
+    if (localStorage.currentPage != "menu") {
+        window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
+        window.Telegram.WebApp.BackButton.show();
+    }
+</script>
     <div class="about">
         <div class="rating"  style="font-size:1.7em;
                                     margin:auto;
@@ -81,9 +113,21 @@ const pages = {
     </div>
 </body>`,
     shop:   `<body>
+    <script type="text/javascript">
+    if (localStorage.currentPage != "menu") {
+        window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
+        window.Telegram.WebApp.BackButton.show();
+    }
+</script>
     <div style="margin: 40vh auto 0 auto; font-size: 3vh;" align="center"><i>Скоро здесь что-нибудь появится...</i></div>
 </body>`,
     vp: `<body onload="getCurrentBattlesByTag(); getTags()">
+    <script type="text/javascript">
+    if (localStorage.currentPage != "menu") {
+        window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
+        window.Telegram.WebApp.BackButton.show();
+    }
+</script>
     <div class="tags">
     </div>
 
@@ -91,6 +135,12 @@ const pages = {
     </div>
 </body>`,
     yt: `<body style="height:100vh">
+    <script type="text/javascript">
+    if (localStorage.currentPage != "menu") {
+        window.Telegram.WebApp.BackButton.onClick(() => {window.location.href = 'menu.html'})
+        window.Telegram.WebApp.BackButton.show();
+    }
+</script>
 
     <div class="yt-connect" align="center">
 
@@ -181,6 +231,8 @@ function redirect(url) {
 
             newBody.appendChild(bodyContent)
             html.appendChild(newBody)
+
+            setTimeout(handler, 1000)
 
             getTags();
             getCurrentBattlesByTag();
@@ -937,14 +989,4 @@ function videoDeletion() {
     if(marked.length != 0) {
         deleteVideo(marked.id)
     }
-}
-
-var WebApp = window.Telegram.WebApp;
-var BackButton = WebApp.BackButton;
-
-WebApp.expand();
-
-if (localStorage.currentPage != "menu") {
-    BackButton.onClick(() => {window.location.href = 'menu.html'})
-    BackButton.show();
 }
