@@ -510,12 +510,12 @@ function drawBattles(json) {
 
     battles.setAttribute("class", "battles")
 
-    if (json.items.length == 0) {
-        let message = document.querySelector("div")
-        message.innerHTML = "В данный момент нет идущих баттлов"
-        body.appendChild(message)
+    // if (json.items.length == 0) {
+    //     let message = document.querySelector("div")
+    //     message.innerHTML = "В данный момент нет идущих баттлов"
+    //     body.appendChild(message)
 
-    }
+    // }
     for(let i = 0; i < json.items.length; i++) {
         let battle = document.createElement("div");
 
@@ -950,7 +950,7 @@ function videoDeletion() {
         videos[i].setAttribute("onclick", "mark(this, this.id)");
     }
 
-    insertion = "<div style='text-align:center' class='manual'><i>Отметьте видео (одно), подлежащее удалению, а затем снова нажмите удалить на кнопку удаления<i></div>"
+    insertion = "<div style='text-align:center' class='manual'><i>Выберите видео (одно) для удаления, а затем нажмите кнопку еще раз<i></div>"
 
     videosInsertion.insertAdjacentHTML("beforebegin", insertion)
 
@@ -970,10 +970,26 @@ function handler() {
 }
 
 function backButton() {
-    if (localStorage.currentPage != "menu") {
+    if (localStorage.currentPage == "vp") {
         window.Telegram.WebApp.BackButton.onClick(() => {redirect("menu");})
         window.Telegram.WebApp.BackButton.show(); 
-    } else {
+    } else if (localStorage.currentPage == "battle") {
+        window.Telegram.WebApp.BackButton.onClick(() => {redirect("vp");})
+        window.Telegram.WebApp.BackButton.show(); 
+    } else if (localStorage.currentPage == "myvideos") {
+        window.Telegram.WebApp.BackButton.onClick(() => {redirect("challenge");})
+        window.Telegram.WebApp.BackButton.show(); 
+    } else if (localStorage.currentPage == "profile") {
+        window.Telegram.WebApp.BackButton.onClick(() => {redirect("menu");})
+        window.Telegram.WebApp.BackButton.show(); 
+    } else if (localStorage.currentPage == "shop") {
+        window.Telegram.WebApp.BackButton.onClick(() => {redirect("menu");})
+        window.Telegram.WebApp.BackButton.show(); 
+    } else if (localStorage.currentPage == "yt") {
+        window.Telegram.WebApp.BackButton.onClick(() => {redirect("profile");})
+        window.Telegram.WebApp.BackButton.show(); 
+    }
+    else {
         window.Telegram.WebApp.BackButton.hide();
         window.Telegram.WebApp.BackButton.isVisible = false;
     }
